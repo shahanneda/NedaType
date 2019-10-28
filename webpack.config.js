@@ -1,4 +1,5 @@
 module.exports = {
+  mode: "development",
   watch: true,
   entry: './src/index.js',
   module: {

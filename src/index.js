@@ -1,7 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-const title = 'React with Webpack and Babel';
+import TypeComponent from "./components/type.js"
+const title = 'Shahan Type';
 ReactDOM.render(
-  <div>{title}</div>,
-  document.getElementById('app')
+  <div>
+
+  Welcome to Shahan Type
+  <TypeComponent name="test" />
+  </div>,
+  document.getElementById('app'),
 );
