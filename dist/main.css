@@ -1,12 +1,23 @@
 
 .text{
   font-size: 100px;
-  font-family: sans-serif;
+  display: inline;
+  background: #fff;
+  padding: 5px;
+  margin: 5px;
+  font-size: 2em;
+  line-height: 2.2em;
+  font-family: monospace;
 }
 
 .currentLetter{
   color:red;
+  /* word-spacing: 50px; */
+
 }
 .alreadyTypedText{
   color:blue;
+}
+.whitespaceCurrentLetter{
+  opacity: 0.2;
 }

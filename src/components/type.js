@@ -10,19 +10,32 @@ class TypeComponent extends React.Component{
     this._handleKeyDown = this._handleKeyDown.bind(this);
     this.handleKeyTyped = this.handleKeyTyped.bind(this);
     this.moveCurrentLetterToNextLetter = this.moveCurrentLetterToNextLetter.bind(this);
+    this.handleBackSpace = this.handleBackSpace.bind(this);
   }
   componentDidMount(){
     document.addEventListener("keydown", this._handleKeyDown);
-
   }
   componentWillUnmount() {
     document.removeEventListener("keydown", this._handleKeyDown);
   }
   handleKeyTyped(key){
-    console.log(this.state.currentLetter);
     if(key === this.state.currentLetter){
       this.moveCurrentLetterToNextLetter();
     }
+  }
+  handleBackSpace(key){
+
+    var currentLetter = this.state.currentLetter;//current thin we are typing
+    var screenText = this.state.screenText;// what we need to type
+    var alreadyTypedText = this.state.alreadyTypedText; //already typed
+    this.setState({
+      screenText: currentLetter + screenText,
+      currentLetter:alreadyTypedText.charAt(alreadyTypedText.length-1),
+      alreadyTypedText:alreadyTypedText.substr(0,alreadyTypedText.length-1)
+    });
+
+    // console.log("Current letter: " + this.state.currentLetter + "  ||already: " + this.state.alreadyTypedText + "||to type :" + this.state.screenText);
+
   }
   moveCurrentLetterToNextLetter(){
     var nextLetter = this.state.screenText.charAt(0);
@@ -32,15 +45,20 @@ class TypeComponent extends React.Component{
       alreadyTypedText:this.state.alreadyTypedText+this.state.currentLetter,
     });
 
+
+    // console.log("Current letter: " + this.state.currentLetter + "  ||already: " + this.state.alreadyTypedText + "||to type :" + this.state.screenText);
+
   }
   _handleKeyDown(event){
     switch( event.keyCode ) {
+        case 8:
+          this.handleBackSpace();
+        break;
         default:
         var characterTyped = String.fromCharCode(event.keyCode);
         if(!event.shiftKey){
           characterTyped = characterTyped.toLowerCase();
         }
-        console.log(characterTyped);
         this.handleKeyTyped(characterTyped);
         break;
     }
@@ -48,16 +66,23 @@ class TypeComponent extends React.Component{
 
 
   render(){
-
+    var extraCssName = this.state.currentLetter == " " ? "whitespaceCurrentLetter" : "";
     return <div>
       <div className="text">
           <span className="alreadyTypedText">
           {this.state.alreadyTypedText}
           </span>
-          <span className="currentLetter">{this.state.currentLetter}</span>
+          <span className="currentLetter">
+            <span className={extraCssName}>
+              {this.state.currentLetter==" " ? "_" : this.state.currentLetter}
+            </span>
+          </span>
+
           {this.state.screenText}
       </div>
     </div>;
   }
 }
+
+
 export default TypeComponent;
