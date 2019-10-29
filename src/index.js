@@ -6,7 +6,7 @@ ReactDOM.render(
   <div>
 
   Welcome to Shahan Type
-  <TypeComponent name="test" />
+  <TypeComponent text="Type this text and it will help you get faster!" />
   </div>,
   document.getElementById('app'),
 );

@@ -4,8 +4,8 @@ class TypeComponent extends React.Component{
     super(props);
     this.state = {
       alreadyTypedText:"",
-      currentLetter:"T",
-      screenText:"ype this text and it will help you get faster!"
+      currentLetter:this.props.text.charAt(0),
+      screenText:this.props.text.substr(1)
     };
     this._handleKeyDown = this._handleKeyDown.bind(this);
     this.handleKeyTyped = this.handleKeyTyped.bind(this);
