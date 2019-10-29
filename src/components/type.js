@@ -2,7 +2,14 @@ import React from 'react';
 class TypeComponent extends React.Component{
   constructor(props){
     super(props);
-    this.state = {screenText:"Type this text and it will help you get faster!"};
+    this.state = {
+      alreadyTypedText:"",
+      currentLetter:"T",
+      screenText:"ype this text and it will help you get faster!"
+    };
+    this._handleKeyDown = this._handleKeyDown.bind(this);
+    this.handleKeyTyped = this.handleKeyTyped.bind(this);
+    this.moveCurrentLetterToNextLetter = this.moveCurrentLetterToNextLetter.bind(this);
   }
   componentDidMount(){
     document.addEventListener("keydown", this._handleKeyDown);
@@ -11,28 +18,44 @@ class TypeComponent extends React.Component{
   componentWillUnmount() {
     document.removeEventListener("keydown", this._handleKeyDown);
   }
+  handleKeyTyped(key){
+    console.log(this.state.currentLetter);
+    if(key === this.state.currentLetter){
+      this.moveCurrentLetterToNextLetter();
+    }
+  }
+  moveCurrentLetterToNextLetter(){
+    var nextLetter = this.state.screenText.charAt(0);
+    this.setState({
+      currentLetter:nextLetter,
+      screenText: this.state.screenText.substr(1),
+      alreadyTypedText:this.state.alreadyTypedText+this.state.currentLetter,
+    });
+
+  }
   _handleKeyDown(event){
     switch( event.keyCode ) {
-        case 32:
-            console.log("test");
-            break;
         default:
         var characterTyped = String.fromCharCode(event.keyCode);
         if(!event.shiftKey){
           characterTyped = characterTyped.toLowerCase();
         }
         console.log(characterTyped);
-            break;
+        this.handleKeyTyped(characterTyped);
+        break;
     }
   }
-  moveCurrentLetterToNextLetter(){
 
-  }
+
   render(){
 
     return <div>
       <div className="text">
-          {this.state.currentLetter} {this.state.screenText}
+          <span className="alreadyTypedText">
+          {this.state.alreadyTypedText}
+          </span>
+          <span className="currentLetter">{this.state.currentLetter}</span>
+          {this.state.screenText}
       </div>
     </div>;
   }
