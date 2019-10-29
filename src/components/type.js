@@ -50,15 +50,20 @@ class TypeComponent extends React.Component{
 
   }
   _handleKeyDown(event){
-    switch( event.keyCode ) {
-        case 8:
-          this.handleBackSpace();
-        break;
+    if(event.keyCode == 8){
+      this.handleBackSpace();
+      return;
+    }
+    switch( event.key ) {
+
         default:
-        var characterTyped = String.fromCharCode(event.keyCode);
-        if(!event.shiftKey){
-          characterTyped = characterTyped.toLowerCase();
-        }
+        var characterTyped = event.key;
+        // if(!event.shiftKey){
+        //   console.log("charact: " + characterTyped + "  " + event.keyCode)
+        //
+        //   // characterTyped = characterTyped.toLowerCase();
+        // }
+        console.log("charact: " + characterTyped + "  " + event.key);
         this.handleKeyTyped(characterTyped);
         break;
     }

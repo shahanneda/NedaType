@@ -11,7 +11,7 @@
 }
 
 .currentLetter{
-  color:red;
+  background-color: lightgrey;
   /* word-spacing: 50px; */
 
 }
