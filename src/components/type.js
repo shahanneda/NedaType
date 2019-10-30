@@ -123,7 +123,7 @@ class TypeComponent extends React.Component {
     var arrayMistake = this.state.arrayOfMistakes;
     for (var i = 0; i < typedText.length; i++) {
       if (arrayMistake.includes(i)) {
-        formattedTypedText.push(<span className='error'>{typedText.charAt(i)}</span>);
+        formattedTypedText.push(<span key={typedText.charAt(i) + i} className='error'>{typedText.charAt(i)}</span>);
       } else {
         formattedTypedText.push(typedText.charAt(i));
       }
