@@ -23,8 +23,10 @@ class TypeComponent extends React.Component {
   componentDidUpdate(prevProps) {
     if (prevProps.text !== this.props.text) {
       this.setState({
+        alreadyTypedText: "",
         currentLetter: this.props.text.charAt(0),
         screenText: this.props.text.substr(1),
+        arrayOfMistakes: [],
       });
     }
   }
