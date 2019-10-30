@@ -34,6 +34,7 @@ class TypeComponent extends React.Component {
     var currentLetter = this.state.currentLetter;//current thin we are typing
     var screenText = this.state.screenText;// what we need to type
     var alreadyTypedText = this.state.alreadyTypedText; //already typed
+    console.log(letter);
     this.setState({
       screenText: screenText,
       currentLetter: currentLetter,
@@ -51,14 +52,13 @@ class TypeComponent extends React.Component {
     console.log("index of delete = " + (alreadyTypedText.length - 1));
     if (arrayOfMistakes.includes(alreadyTypedText.length - 1)) {
       alreadyTypedText = alreadyTypedText.substr(0, alreadyTypedText.length - 1);
-      arrayOfMistakes = arrayOfMistakes.splice(arrayOfMistakes.indexOf(alreadyTypedText.length), 1);
-
-
+      arrayOfMistakes.pop();
+      console.log(arrayOfMistakes.length);
       this.setState({
         // screenText: currentLetter + screenText,
         // currentLetter: alreadyTypedText.charAt(alreadyTypedText.length - 1),
         alreadyTypedText: alreadyTypedText,
-        arrayMistake: arrayOfMistakes,
+        arrayOfMistakes: arrayOfMistakes,
       });
     } else {
       this.setState({
@@ -123,7 +123,7 @@ class TypeComponent extends React.Component {
     var arrayMistake = this.state.arrayOfMistakes;
     for (var i = 0; i < typedText.length; i++) {
       if (arrayMistake.includes(i)) {
-        formattedTypedText.push(<span key={typedText.charAt(i) + i} className='error'>{typedText.charAt(i)}</span>);
+        formattedTypedText.push(<span key={typedText.charAt(i) + i} className={typedText.charAt(i) == " " ? "error spaceError" : "error"}>{typedText.charAt(i)}</span>);
       } else {
         formattedTypedText.push(typedText.charAt(i));
       }

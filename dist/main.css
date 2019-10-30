@@ -8,8 +8,11 @@
   font-size: 2em;
   line-height: 2.2em;
   font-family: monospace;
+  white-space: pre-wrap; 
 }
-
+.outerTextContainer{
+  width: 100%;
+}
 .currentLetter{
   background-color: lightgrey;
   /* word-spacing: 50px; */
@@ -23,4 +26,8 @@
 }
 .error{
   color:red;
+}
+.spaceError{
+  background-color: rgba(255, 0, 0, 0.527);
+  white-space: pre;
 }
