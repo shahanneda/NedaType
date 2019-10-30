@@ -20,6 +20,14 @@ class TypeComponent extends React.Component {
   componentWillUnmount() {
     document.removeEventListener("keydown", this._handleKeyDown);
   }
+  componentDidUpdate(prevProps) {
+    if (prevProps.text !== this.props.text) {
+      this.setState({
+        currentLetter: this.props.text.charAt(0),
+        screenText: this.props.text.substr(1),
+      });
+    }
+  }
   handleKeyTyped(key) {
     if (key === this.state.currentLetter) {
       this.moveCurrentLetterToNextLetter();
