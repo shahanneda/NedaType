@@ -21,3 +21,6 @@
 .whitespaceCurrentLetter{
   opacity: 0.2;
 }
+.error{
+  color:red;
+}
