@@ -4,23 +4,36 @@ import LevelPicker from "./LevelPicker.jsx";
 class App extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { indexSelected: 0 };
+        this.state = {
+            indexSelected: 0,
+            isHardModeChecked: false
+        };
         this.handleOptionChange = this.handleOptionChange.bind(this);
+        this.handleHardMode = this.handleHardMode.bind(this);
     }
 
     render() {
         return (
             <div key={this.props.text}>
+
                 Welcome to Shahan Type
                 <div className="outerTextContainer">
+                    <label htmlFor="hardMode">Hard Mode</label>
+                    <input type="checkbox" name="hardMode" onChange={this.handleHardMode} checked={this.state.isHardModeChecked}></input>
                     <LevelPicker options={this.props.differentTexts} onChange={this.handleOptionChange} />
-                    <TypeComponent text={this.props.differentTexts[this.state.indexSelected].text} hardMode={true} />
+                    <TypeComponent text={this.props.differentTexts[this.state.indexSelected].text} hardMode={this.state.isHardModeChecked} />
                 </div>
             </div>
 
 
 
         );
+    }
+    handleHardMode(event) {
+        console.log(this.state.isHardModeChecked);
+        this.setState({
+            isHardModeChecked: !this.state.isHardModeChecked,
+        });
     }
     handleOptionChange(titleOfValue) {
         var index = -1;
