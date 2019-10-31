@@ -6,7 +6,9 @@ class TypeComponent extends React.Component {
       alreadyTypedText: "",
       currentLetter: this.props.text.charAt(0),
       screenText: this.props.text.substr(1),
-      arrayOfMistakes: []
+      arrayOfMistakes: [],
+      charTypedSinceStart: 0,//used for wmp counter,
+      timeOfStart: Date.now(),
     };
     this._handleKeyDown = this._handleKeyDown.bind(this);
     this.handleKeyTyped = this.handleKeyTyped.bind(this);
@@ -27,30 +29,68 @@ class TypeComponent extends React.Component {
         currentLetter: this.props.text.charAt(0),
         screenText: this.props.text.substr(1),
         arrayOfMistakes: [],
+        timeOfStart: Date.now(),
+        charTypedSinceStart: 0
+
       });
     }
   }
   handleKeyTyped(key) {
     if (key === this.state.currentLetter) {
       this.moveCurrentLetterToNextLetter();
+      // if (this.state.charTypedSinceLastWPM > 5) {
+
+      // }
+
     } else {//user made error  
       this.addLetterToTypedText(key);
       var index = this.state.alreadyTypedText.length;
       // this.setState({ arrayOfMistakes: [...this.state.arrayOfMistakes, index] });
-      this.setState({ arrayOfMistakes: [...this.state.arrayOfMistakes, index - 1] });
+      var screenTextTemp = this.state.screenText;
+      var alreadyTypedTextTemp = this.state.alreadyTypedText;
+
+      this.setState({
+        arrayOfMistakes: [...this.state.arrayOfMistakes, index - 1],
+      });
+
+      for (var j = 0; j < this.state.arrayOfMistakes.length; j++) {
+        let indexOfMistake = this.state.arrayOfMistakes[j];
+        // console.log("index of error: " + indexOfMistake);
+        // console.log("Before text  = " + alreadyTypedTextTemp.substr(0, indexOfMistake) + " after " + alreadyTypedTextTemp.substring(indexOfMistake + 1))
+        alreadyTypedTextTemp = alreadyTypedTextTemp.substr(0, indexOfMistake) + "�" + alreadyTypedTextTemp.substr(indexOfMistake + 1);
+      }
+      alreadyTypedTextTemp = alreadyTypedTextTemp.replace(/�/g, "");
+      // console.log(alreadyTypedTextTemp);
+
+      // alreadyTypedTextTemp = alreadyTypedTextTemp.slice(0, index - 1) + alreadyTypedTextTemp.slice(index - 1 + 1);
+      var arrayOfAlreadyTypeText = alreadyTypedTextTemp.split(" ");
+
+      let beforeWord = arrayOfAlreadyTypeText[arrayOfAlreadyTypeText.length - 1];
+      let afterWord = screenTextTemp.split(" ")[0];
+      console.log(beforeWord + "" + this.state.currentLetter + "" + afterWord);
+      let word = " " + beforeWord + this.state.currentLetter + afterWord;
+
+      let indexOfNextSpaceInScreenText = screenTextTemp.indexOf(" ");
+      let beforeWordsText = this.state.screenText.substr(0, indexOfNextSpaceInScreenText);
+      let textAfter = screenTextTemp.substr(screenTextTemp.indexOf(" "));
+      this.setState({
+        arrayOfMistakes: [...this.state.arrayOfMistakes, index - 1],
+        screenText: beforeWordsText + word + word + word + word + textAfter,
+
+
+      });
+
     }
   }
   addLetterToTypedText(letter) {
     var currentLetter = this.state.currentLetter;//current thin we are typing
     var screenText = this.state.screenText;// what we need to type
     var alreadyTypedText = this.state.alreadyTypedText; //already typed
-    console.log(letter);
     this.setState({
       screenText: screenText,
       currentLetter: currentLetter,
-      alreadyTypedText: alreadyTypedText + letter
+      alreadyTypedText: alreadyTypedText + letter,
     });
-
   }
 
   handleBackSpace(key) {
@@ -59,11 +99,9 @@ class TypeComponent extends React.Component {
     var screenText = this.state.screenText;// what we need to type
     var alreadyTypedText = this.state.alreadyTypedText; //already typed
     var arrayOfMistakes = this.state.arrayOfMistakes;
-    console.log("index of delete = " + (alreadyTypedText.length - 1));
     if (arrayOfMistakes.includes(alreadyTypedText.length - 1)) {
       alreadyTypedText = alreadyTypedText.substr(0, alreadyTypedText.length - 1);
       arrayOfMistakes.pop();
-      console.log(arrayOfMistakes.length);
       this.setState({
         // screenText: currentLetter + screenText,
         // currentLetter: alreadyTypedText.charAt(alreadyTypedText.length - 1),
@@ -78,8 +116,6 @@ class TypeComponent extends React.Component {
       });
     }
 
-    // console.log("Current letter: " + this.state.currentLetter + "  ||already: " + this.state.alreadyTypedText + "||to type :" + this.state.screenText);
-
   }
   moveCurrentLetterToNextLetter() {
     var nextLetter = this.state.screenText.charAt(0);
@@ -87,10 +123,10 @@ class TypeComponent extends React.Component {
       currentLetter: nextLetter,
       screenText: this.state.screenText.substr(1),
       alreadyTypedText: this.state.alreadyTypedText + this.state.currentLetter,
+      charTypedSinceStart: this.state.charTypedSinceStart + 1,
     });
 
 
-    // console.log("Current letter: " + this.state.currentLetter + "  ||already: " + this.state.alreadyTypedText + "||to type :" + this.state.screenText);
 
   }
   _handleKeyDown(event) {
@@ -114,11 +150,9 @@ class TypeComponent extends React.Component {
         default:
           var characterTyped = event.key;
           // if(!event.shiftKey){
-          //   console.log("charact: " + characterTyped + "  " + event.keyCode)
           //
           //   // characterTyped = characterTyped.toLowerCase();
           // }
-          console.log("charact: " + characterTyped + "  " + event.key);
           this.handleKeyTyped(characterTyped);
           break;
       }
@@ -139,6 +173,7 @@ class TypeComponent extends React.Component {
       }
     }
     return <div>
+      <WpmCounter startTime={this.state.timeOfStart} charactersTyped={this.state.charTypedSinceStart} />
       <div className="text">
         <span className="alreadyTypedText">
           {formattedTypedText}
@@ -155,5 +190,41 @@ class TypeComponent extends React.Component {
   }
 }
 
+class WpmCounter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      secondSinceStart: (Date.now() - this.props.startTime) / 1000,
+      charsTyped: this.props.charactersTyped,
+      wpm: 0
+    };
+  }
+  componentDidUpdate(oldProps) {
 
+
+    if (oldProps.charactersTyped != this.state.charsTyped) {
+
+      // 
+
+      this.setState({
+        secondSinceStart: (Date.now() - this.props.startTime) / 1000,
+        charsTyped: this.props.charactersTyped,
+      });
+      var wordsTyped = this.props.charactersTyped / 5;
+      var minPast = this.state.secondSinceStart / 60;
+      this.setState({
+        wpm: wordsTyped / minPast,
+      });
+
+    }
+  }
+  render() {
+
+    return (
+      <div>
+        Current WPM = {Math.floor(this.state.wpm)}
+      </div>
+    );
+  }
+}
 export default TypeComponent;

@@ -15,8 +15,15 @@ const differentTexts = [
   {
     title: "Common patterns #1: ing",
     text: "Welcome, lets work on some ing's. ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing. Whooooh, that must have been tiring. Tiring, liking, tiring, learning, tiring, eating, ing ing ing, something ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing. Something was a thing and another thing that led to something inginging, bling cling bling cling, bling cling bling cling."
-  }
-];
+  },
+  {
+    title: "So you hate me now?",
+    text: "I hope you truely enjoyed typing all those ing's. I am very proud of you, you have made alot of amazing progress,keep going!!!&*&"
+  },
+  {
+    title: "Paying Attention",
+    text: "Hello there, I wanted to make sure that you pay attention every single leter, make suer that you do not generalize, sounds in to words. This prevents otherwise simply stupid mistakes. Lacking Mistiakesm,  "
+  }];
 
 
 ReactDOM.render(

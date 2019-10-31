@@ -14,7 +14,7 @@ class App extends React.Component {
                 Welcome to Shahan Type
                 <div className="outerTextContainer">
                     <LevelPicker options={this.props.differentTexts} onChange={this.handleOptionChange} />
-                    <TypeComponent text={this.props.differentTexts[this.state.indexSelected].text} />
+                    <TypeComponent text={this.props.differentTexts[this.state.indexSelected].text} hardMode={true} />
                 </div>
             </div>
 
