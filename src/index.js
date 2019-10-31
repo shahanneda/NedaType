@@ -23,7 +23,13 @@ const differentTexts = [
   {
     title: "Paying Attention",
     text: "Hello there, I wanted to make sure that you pay attention every single leter, make suer that you do not generalize, sounds in to words. This prevents otherwise simply stupid mistakes. Lacking Mistiakesm,  which nobbody woulld evver wantt to make!? Hooow iss it going? gooodbye!"
-  }];
+  },
+  {
+    title: "Wood Pecker Chuck Chuck",
+    text: "To those cheeky enough to claim that the preluding \"examinations\" are lacking in difficulty, i have yet another obsical for you to overcome. Including spelling erors, many different Abreviations and false caPitalization$. Good luck!@*^! How much wood wood a wood chcuk chuck if a wood cuck would chock wuud? The answer is oblivious; nun, nil none, nothing, void, error 404 %Bx16 or in other words: nada. And no matter how hard thy may struggle to force feed an overgrown chipmunck wood, you would never succeed in in overcoming the insurmountable issue that is animal abuse and P3Ta*."
+  }
+
+];
 
 
 ReactDOM.render(
