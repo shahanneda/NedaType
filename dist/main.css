@@ -5,10 +5,13 @@
   background: #fff;
   padding: 5px;
   margin: 5px;
-  font-size: 2em;
+  font-size:2em; 
   line-height: 2.2em;
   font-family: monospace;
   white-space: pre-wrap; 
+
+  text-align: justify;
+  text-justify: inter-word;
 }
 .outerTextContainer{
   width: 100%;

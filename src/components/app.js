@@ -21,7 +21,7 @@ class App extends React.Component {
                     <label htmlFor="hardMode">Hard Mode</label>
                     <input type="checkbox" name="hardMode" onChange={this.handleHardMode} checked={this.state.isHardModeChecked}></input>
                     <LevelPicker options={this.props.differentTexts} onChange={this.handleOptionChange} />
-                    <TypeComponent text={this.props.differentTexts[this.state.indexSelected].text} hardMode={this.state.isHardModeChecked} />
+                    <TypeComponent align="justify" text={this.props.differentTexts[this.state.indexSelected].text} hardMode={this.state.isHardModeChecked} />
                 </div>
             </div>
 

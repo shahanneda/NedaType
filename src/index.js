@@ -14,7 +14,7 @@ const differentTexts = [
   },
   {
     title: "Common patterns #1: ing",
-    text: "Welcome, lets work on some ing's. ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing. Whooooh, that must have been tiring. Tiring, liking, tiring, learning, tiring, eating, ing ing ing, something ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing. Something was a thing and another thing that led to something inginging, bling cling bling cling, bling cling bling cling."
+    text: "Welcome, lets work on some ings. ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing. Whooooh, that must have been tiring. Tiring, liking, tiring, learning, tiring, eating, ing ing ing, something ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing. Something was a thing and another thing that led to something inginging, bling cling bling cling, bling cling bling cling."
   },
   {
     title: "So you hate me now?",
@@ -27,6 +27,10 @@ const differentTexts = [
   {
     title: "Wood Pecker Chuck Chuck",
     text: "To those cheeky enough to claim that the preluding \"examinations\" are lacking in difficulty, i have yet another obsical for you to overcome. Including spelling erors, many different Abreviations and false caPitalization$. Good luck!@*^! How much wood wood a wood chcuk chuck if a wood cuck would chock wuud? The answer is oblivious; nun, nil none, nothing, void, error 404 %Bx16 or in other words: nada. And no matter how hard thy may struggle to force feed an overgrown chipmunck wood, you would never succeed in in overcoming the insurmountable issue that is animal abuse and P3Ta*."
+  },
+  {
+    title: "Common patterns #2 ion",
+    text: "Welcome, lets work on some ion. Ion ion ion ion ion ion ion ion. Capitalization, compression capitalization compression capitalization compression capitalization compression. Ion ion ion ion ion. Education of million union million union million union million union million union. ion ion ion ion ion ion ion ion."
   }
 
 ];
