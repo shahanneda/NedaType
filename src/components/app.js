@@ -34,6 +34,7 @@ class App extends React.Component {
         this.setState({
             isHardModeChecked: !this.state.isHardModeChecked,
         });
+        event.target.blur();
     }
     handleOptionChange(titleOfValue) {
         var index = -1;
