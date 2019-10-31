@@ -22,7 +22,7 @@ const differentTexts = [
   },
   {
     title: "Paying Attention",
-    text: "Hello there, I wanted to make sure that you pay attention every single leter, make suer that you do not generalize, sounds in to words. This prevents otherwise simply stupid mistakes. Lacking Mistiakesm,  "
+    text: "Hello there, I wanted to make sure that you pay attention every single leter, make suer that you do not generalize, sounds in to words. This prevents otherwise simply stupid mistakes. Lacking Mistiakesm,  which nobbody woulld evver wantt to make!? Hooow iss it going? gooodbye!"
   }];
 
 
