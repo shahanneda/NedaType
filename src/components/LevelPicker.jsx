@@ -29,6 +29,7 @@ class LevelPicker extends React.Component {
     handleChange(event) {
         this.setState({ value: event.target.value });
         this.props.onChange(event.target.value);
+        event.target.blur();
     }
 }
 export default LevelPicker;
