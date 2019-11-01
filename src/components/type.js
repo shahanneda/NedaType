@@ -57,26 +57,7 @@ class TypeComponent extends React.Component {
         arrayOfMistakes: [...this.state.arrayOfMistakes, index - 1],
       });
       if (this.props.hardMode == true) {
-
-
-        for (var j = 0; j < this.state.arrayOfMistakes.length; j++) {
-          let indexOfMistake = this.state.arrayOfMistakes[j];
-          // console.log("index of error: " + indexOfMistake);
-          // console.log("Before text  = " + alreadyTypedTextTemp.substr(0, indexOfMistake) + " after " + alreadyTypedTextTemp.substring(indexOfMistake + 1))
-          alreadyTypedTextTemp = alreadyTypedTextTemp.substr(0, indexOfMistake) + "�" + alreadyTypedTextTemp.substr(indexOfMistake + 1);
-        }
-        alreadyTypedTextTemp = alreadyTypedTextTemp.replace(/�/g, "");
-        // console.log(alreadyTypedTextTemp);
-
-        // alreadyTypedTextTemp = alreadyTypedTextTemp.slice(0, index - 1) + alreadyTypedTextTemp.slice(index - 1 + 1);
-
-        var arrayOfAlreadyTypeText = alreadyTypedTextTemp.split(" ");
-
-        let beforeWord = arrayOfAlreadyTypeText[arrayOfAlreadyTypeText.length - 1];
-        let afterWord = screenTextTemp.split(" ")[0];
-        console.log(beforeWord + "" + this.state.currentLetter + "" + afterWord);
-        let word = " " + beforeWord + this.state.currentLetter + afterWord;
-
+        let word = this.getWordCurrentlyTyping();
         let indexOfNextSpaceInScreenText = screenTextTemp.indexOf(" ");
         let beforeWordsText = this.state.screenText.substr(0, indexOfNextSpaceInScreenText);
         let textAfter = screenTextTemp.substr(screenTextTemp.indexOf(" "));
@@ -102,6 +83,34 @@ class TypeComponent extends React.Component {
 
       }
     }
+  }
+
+  getWordCurrentlyTyping() {
+    var index = this.state.alreadyTypedText.length;
+    // this.setState({ arrayOfMistakes: [...this.state.arrayOfMistakes, index] });
+    var screenTextTemp = this.state.screenText;
+    var alreadyTypedTextTemp = this.state.alreadyTypedText;
+
+
+    for (var j = 0; j < this.state.arrayOfMistakes.length; j++) {
+      let indexOfMistake = this.state.arrayOfMistakes[j];
+      // console.log("index of error: " + indexOfMistake);
+      // console.log("Before text  = " + alreadyTypedTextTemp.substr(0, indexOfMistake) + " after " + alreadyTypedTextTemp.substring(indexOfMistake + 1))
+      alreadyTypedTextTemp = alreadyTypedTextTemp.substr(0, indexOfMistake) + "�" + alreadyTypedTextTemp.substr(indexOfMistake + 1);
+    }
+    alreadyTypedTextTemp = alreadyTypedTextTemp.replace(/�/g, "");
+    // console.log(alreadyTypedTextTemp);
+
+    // alreadyTypedTextTemp = alreadyTypedTextTemp.slice(0, index - 1) + alreadyTypedTextTemp.slice(index - 1 + 1);
+
+    var arrayOfAlreadyTypeText = alreadyTypedTextTemp.split(" ");
+
+    let beforeWord = arrayOfAlreadyTypeText[arrayOfAlreadyTypeText.length - 1];
+    let afterWord = screenTextTemp.split(" ")[0];
+    console.log(beforeWord + "" + this.state.currentLetter + "" + afterWord);
+    let word = " " + beforeWord + this.state.currentLetter + afterWord;
+    return word;
+
   }
   addLetterToTypedText(letter) {
     var currentLetter = this.state.currentLetter;//current thin we are typing
