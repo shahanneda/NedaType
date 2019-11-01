@@ -9,6 +9,8 @@ class TypeComponent extends React.Component {
       arrayOfMistakes: [],
       charTypedSinceStart: 0,//used for wmp counter,
       timeOfStart: Date.now(),
+      numberOfWordRepeater: 0,
+      curentWordGettingRepeated: ""
     };
     this._handleKeyDown = this._handleKeyDown.bind(this);
     this.handleKeyTyped = this.handleKeyTyped.bind(this);
@@ -30,7 +32,9 @@ class TypeComponent extends React.Component {
         screenText: this.props.text.substr(1),
         arrayOfMistakes: [],
         timeOfStart: Date.now(),
-        charTypedSinceStart: 0
+        charTypedSinceStart: 0,
+        numberOfWordRepeater: 0,
+        curentWordGettingRepeated: ""
 
       });
     }
@@ -65,6 +69,7 @@ class TypeComponent extends React.Component {
         // console.log(alreadyTypedTextTemp);
 
         // alreadyTypedTextTemp = alreadyTypedTextTemp.slice(0, index - 1) + alreadyTypedTextTemp.slice(index - 1 + 1);
+
         var arrayOfAlreadyTypeText = alreadyTypedTextTemp.split(" ");
 
         let beforeWord = arrayOfAlreadyTypeText[arrayOfAlreadyTypeText.length - 1];
@@ -75,11 +80,26 @@ class TypeComponent extends React.Component {
         let indexOfNextSpaceInScreenText = screenTextTemp.indexOf(" ");
         let beforeWordsText = this.state.screenText.substr(0, indexOfNextSpaceInScreenText);
         let textAfter = screenTextTemp.substr(screenTextTemp.indexOf(" "));
+        if (word == this.state.curentWordGettingRepeated && this.state.numberOfWordRepeater < 20) {
 
+          this.setState({
+            screenText: beforeWordsText + word + word + word + word + textAfter,
+            numberOfWordRepeater: this.state.numberOfWordRepeater + 4,
+          });
+        } else if (word == this.state.curentWordGettingRepeated && this.state.numberOfWordRepeater >= 20) {
 
-        this.setState({
-          screenText: beforeWordsText + word + word + word + word + textAfter,
-        });
+        } else if (word != this.state.curentWordGettingRepeated) {
+          this.setState({
+            screenText: beforeWordsText + word + word + word + word + textAfter,
+            numberOfWordRepeater: 4,
+            curentWordGettingRepeated: word,
+
+          });
+        }
+        // this.setState({
+        //   screenText: beforeWordsText + word + word + word + word + textAfter,
+        // });
+
       }
     }
   }
