@@ -34,7 +34,7 @@
   background-color: rgba(255, 0, 0, 0.527);
   white-space: pre;
 }
-span.wpmCounterOnText {
+/* span.wpmCounterOnText {
   font-size: 12.8px;
   position: relative;
   bottom: 20.2px;
@@ -43,4 +43,11 @@ span.wpmCounterOnText {
   margin-left: -46px;
   color: yellowgreen;
  
+} */
+span.wpmCounterOnText {
+  font-size: 8.8px;
+  position: absolute;
+  color: yellowgreen;
+  margin-top: -19px;
+  margin-left: -35.5px;
 }

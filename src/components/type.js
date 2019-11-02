@@ -236,12 +236,12 @@ class TypeComponent extends React.Component {
     for (var i = 0; i < typedText.length; i++) {
       if (arrayMistake.includes(i)) {
         formattedTypedText.push(<span key={typedText.charAt(i) + i} className={typedText.charAt(i) == " " ? "error spaceError" : "error"}>{typedText.charAt(i)}</span>);
+      } else if (typedText.charAt(i) == " ") {
+        formattedTypedText.push(<span className="wpmCounterOnText">{this.state.arrayOfWordWPMs[wordCounter]} WPM</span>);
+        formattedTypedText.push(" ");
+        wordCounter++;
       } else {
         formattedTypedText.push(typedText.charAt(i));
-      }
-      if (typedText.charAt(i) == " ") {
-        formattedTypedText.push(<span className="wpmCounterOnText">{this.state.arrayOfWordWPMs[wordCounter]} WPM</span>);
-        wordCounter++;
       }
     }
     return <div>
