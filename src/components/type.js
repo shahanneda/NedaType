@@ -12,7 +12,8 @@ class TypeComponent extends React.Component {
       timeOfStart: Date.now(),
       numberOfWordRepeater: 0,
       curentWordGettingRepeated: "",
-      timeCurrentWordStarted: Date.now()
+      timeCurrentWordStarted: Date.now(),
+
     };
     this._handleKeyDown = this._handleKeyDown.bind(this);
     this.handleKeyTyped = this.handleKeyTyped.bind(this);
@@ -79,12 +80,6 @@ class TypeComponent extends React.Component {
         }
 
       }
-      // this.moveCurrentLetterToNextLetter();
-
-      // if (this.state.charTypedSinceLastWPM > 5) {
-
-      // }
-
     } else {//user made error  
       this.addLetterToTypedText(key);
       var index = this.state.alreadyTypedText.length;
