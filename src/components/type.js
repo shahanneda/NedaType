@@ -9,7 +9,7 @@ class TypeComponent extends React.Component {
       arrayOfWordWPMs: [],
       arrayOfMistakes: [],
       charTypedSinceStart: 0,//used for wmp counter,
-      timeOfStart: Date.now(),
+      timeOfStart: -999,
       numberOfWordRepeater: 0,
       curentWordGettingRepeated: "",
       timeCurrentWordStarted: Date.now(),
@@ -35,7 +35,7 @@ class TypeComponent extends React.Component {
         currentLetter: this.props.text.charAt(0),
         screenText: this.props.text.substr(1),
         arrayOfMistakes: [],
-        timeOfStart: Date.now(),
+        timeOfStart: -999,
         charTypedSinceStart: 0,
         numberOfWordRepeater: 0,
         curentWordGettingRepeated: "",
@@ -46,6 +46,11 @@ class TypeComponent extends React.Component {
     }
   }
   handleKeyTyped(key) {
+    if (this.state.timeOfStart == -999) {
+      this.setState({
+        timeOfStart: Date.now(),
+      })
+    }
     if (this.state.alreadyTypedText[this.state.alreadyTypedText.length - 1] == " " && this.state.arrayOfMistakes[this.state.arrayOfMistakes.length - 1] != this.state.alreadyTypedText.length - 1) {
       this.setState({
         timeCurrentWordStarted: Date.now(),
@@ -289,7 +294,9 @@ class WpmCounter extends React.Component {
       this.setState({
         wpm: wordsTyped / minPast,
       });
-
+      if (this.props.startTime == -999) {
+        this.setState({ wpm: 0 });
+      }
     }
   }
   render() {
