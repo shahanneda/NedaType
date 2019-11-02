@@ -44,7 +44,12 @@ class App extends React.Component {
                         <option className="mimWpmDropdown" value={75} key={75}>
                             75
                         </option>
-
+                        <option className="mimWpmDropdown" value={85} key={85}>
+                            85
+                        </option>
+                        <option className="mimWpmDropdown" value={100} key={100}>
+                            100
+                        </option>
                     </select>
 
                     <LevelPicker options={this.props.differentTexts} onChange={this.handleOptionChange} />
