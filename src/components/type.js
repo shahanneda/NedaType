@@ -6,17 +6,20 @@ class TypeComponent extends React.Component {
       alreadyTypedText: "",
       currentLetter: this.props.text.charAt(0),
       screenText: this.props.text.substr(1),
+      arrayOfWordWPMs: [],
       arrayOfMistakes: [],
       charTypedSinceStart: 0,//used for wmp counter,
       timeOfStart: Date.now(),
       numberOfWordRepeater: 0,
-      curentWordGettingRepeated: ""
+      curentWordGettingRepeated: "",
+      timeCurrentWordStarted: Date.now()
     };
     this._handleKeyDown = this._handleKeyDown.bind(this);
     this.handleKeyTyped = this.handleKeyTyped.bind(this);
     this.moveCurrentLetterToNextLetter = this.moveCurrentLetterToNextLetter.bind(this);
     this.handleBackSpace = this.handleBackSpace.bind(this);
     this.addLetterToTypedText = this.addLetterToTypedText.bind(this);
+
   }
   componentDidMount() {
     document.addEventListener("keydown", this._handleKeyDown);
@@ -34,14 +37,46 @@ class TypeComponent extends React.Component {
         timeOfStart: Date.now(),
         charTypedSinceStart: 0,
         numberOfWordRepeater: 0,
-        curentWordGettingRepeated: ""
+        curentWordGettingRepeated: "",
+        timeCurrentWordStarted: Date.now(),
+        arrayOfWordWPMs: [],
 
       });
     }
   }
   handleKeyTyped(key) {
+    if (this.state.alreadyTypedText[this.state.alreadyTypedText.length - 1] == " " && this.state.arrayOfMistakes[this.state.arrayOfMistakes.length - 1] != this.state.alreadyTypedText.length - 1) {
+      this.setState({
+        timeCurrentWordStarted: Date.now(),
+      });
+    }
     if (key === this.state.currentLetter) {
-      this.moveCurrentLetterToNextLetter();
+
+      if (this.moveCurrentLetterToNextLetter() == " ") {
+        let wordArray = this.getWordCurrentlyTyping().split(" ");
+        let wordJustCompleted = wordArray[1];
+        let nextWord = wordArray[2];
+        console.log(wordJustCompleted);
+
+
+
+        let timeCurrentWordTook = Date.now() - this.state.timeCurrentWordStarted;
+        let mathNumberOfWordsType = wordJustCompleted.length / 5; // assuimg wpm at 5 letter word
+        let speedWordTypedAt = Math.round(mathNumberOfWordsType / ((timeCurrentWordTook / 1000) / 60))// words/ min
+        this.setState({
+          arrayOfWordWPMs: this.state.arrayOfWordWPMs.concat([speedWordTypedAt]),
+          timeCurrentWordStarted: Date.now(),
+        });
+
+        if (speedWordTypedAt < this.props.minSpeed && wordJustCompleted.length > 1) {
+          this.setState({
+            screenText: wordJustCompleted + " " + this.state.screenText,
+          });
+        }
+
+      }
+      // this.moveCurrentLetterToNextLetter();
+
       // if (this.state.charTypedSinceLastWPM > 5) {
 
       // }
@@ -107,7 +142,7 @@ class TypeComponent extends React.Component {
 
     let beforeWord = arrayOfAlreadyTypeText[arrayOfAlreadyTypeText.length - 1];
     let afterWord = screenTextTemp.split(" ")[0];
-    console.log(beforeWord + "" + this.state.currentLetter + "" + afterWord);
+    // console.log(beforeWord + "" + this.state.currentLetter + "" + afterWord);
     let word = " " + beforeWord + this.state.currentLetter + afterWord;
     return word;
 
@@ -155,6 +190,7 @@ class TypeComponent extends React.Component {
       alreadyTypedText: this.state.alreadyTypedText + this.state.currentLetter,
       charTypedSinceStart: this.state.charTypedSinceStart + 1,
     });
+    return nextLetter;
 
 
 
@@ -195,11 +231,17 @@ class TypeComponent extends React.Component {
     var typedText = this.state.alreadyTypedText;
     var formattedTypedText = [];
     var arrayMistake = this.state.arrayOfMistakes;
+
+    var wordCounter = 0;
     for (var i = 0; i < typedText.length; i++) {
       if (arrayMistake.includes(i)) {
         formattedTypedText.push(<span key={typedText.charAt(i) + i} className={typedText.charAt(i) == " " ? "error spaceError" : "error"}>{typedText.charAt(i)}</span>);
       } else {
         formattedTypedText.push(typedText.charAt(i));
+      }
+      if (typedText.charAt(i) == " ") {
+        formattedTypedText.push(<span className="wpmCounterOnText">{this.state.arrayOfWordWPMs[wordCounter]} WPM</span>);
+        wordCounter++;
       }
     }
     return <div>

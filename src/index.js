@@ -31,6 +31,10 @@ const differentTexts = [
   {
     title: "Common patterns #2 ion",
     text: "Welcome, lets work on some ion. Ion ion ion ion ion ion ion ion. Capitalization, compression capitalization compression capitalization compression capitalization compression. Ion ion ion ion ion. Education of million union million union million union million union million union. ion ion ion ion ion ion ion ion."
+  },
+  {
+    title: "Speed",
+    text: "Welcome to this amazing level. In this level you get to type really really fast. It is all normal words that you might encounter in everyday life, so it is benifical for you to get fast at these words. Good job, you are doing great so far. Here are some more words that you need to type, just for the purpose of making this text as long as possible. By this time your getting close to the end, so agian like allways, I am proud of all the progress we arae making."
   }
 
 ];
