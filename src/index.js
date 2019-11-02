@@ -6,7 +6,7 @@ const title = 'Shahan Type';
 const differentTexts = [
   {
     title: "Intro",
-    text: "Type this text and it will help you get faster! Here is some more filler text to make you better at typing. Here are some harder letters to type: / . , * & ^ %. Have  fun!"
+    text: "Type this text and it will help you get faster! Here is some more filler text to make you better at typing. Here are some harder letters to type: / . , * & ^ %. Have fun!"
   },
   {
     title: "First Real level?",

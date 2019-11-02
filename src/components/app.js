@@ -68,6 +68,7 @@ class App extends React.Component {
         this.setState({
             currentMinWPM: Math.floor(event.target.value),
         })
+        event.target.blur();
     }
     handleHardMode(event) {
         console.log(this.state.isHardModeChecked);
