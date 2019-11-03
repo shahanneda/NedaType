@@ -69,7 +69,7 @@ class TypeComponent extends React.Component {
         let timeCurrentWordTook = Date.now() - this.state.timeCurrentWordStarted;
         let mathNumberOfWordsType = wordJustCompleted.length / 5; // assuimg wpm at 5 letter word
         let speedWordTypedAt = Math.round(mathNumberOfWordsType / ((timeCurrentWordTook / 1000) / 60))// words/ min
-        if (wordJustCompleted.length < 3) {
+        if (wordJustCompleted.length < 2) {
           speedWordTypedAt = 999; //marker for wpm counter to not display and also not punish 
         }
 
