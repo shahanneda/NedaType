@@ -78,7 +78,7 @@ class TypeComponent extends React.Component {
           // timeCurrentWordStarted: Da//te.now(),
         });
 
-        if (speedWordTypedAt < this.props.minSpeed && wordJustCompleted.length > 1) {
+        if (speedWordTypedAt < this.props.settings.minWPM && wordJustCompleted.length > 1) {
           this.setState({
             screenText: wordJustCompleted + " " + this.state.screenText,
           });
@@ -95,7 +95,7 @@ class TypeComponent extends React.Component {
       this.setState({
         arrayOfMistakes: [...this.state.arrayOfMistakes, index - 1],
       });
-      if (this.props.hardMode == true) {
+      if (this.props.settings.hardMode == true) {
         let word = this.getWordCurrentlyTyping();
         let indexOfNextSpaceInScreenText = screenTextTemp.indexOf(" ");
         let beforeWordsText = this.state.screenText.substr(0, indexOfNextSpaceInScreenText);

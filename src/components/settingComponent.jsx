@@ -20,20 +20,21 @@ export class SettingsComponent extends Component {
         this.setState({
             settings: {
                 ...this.state.settings,
-                currentMinWPM: Math.floor(event.target.value)
+                minWPM: Math.floor(event.target.value)
             }
         })
         event.target.blur();
     }
     handleHardMode(event) {
-        console.log(this.state.isHardModeChecked);
+        console.log(this.state.hardMode);
         this.setState({
             settings: {
                 ...this.state.settings,
-                isHardModeChecked: !this.state.settings.isHardModeChecked,
+                hardMode: !this.state.settings.hardMode,
             }
         });
         event.target.blur();
+        this.props.handleSettingsChange(ddthis.state.settings);
     }
 
 
@@ -42,10 +43,10 @@ export class SettingsComponent extends Component {
             <div>
 
                 <label htmlFor="hardMode">Hard Mode:</label>
-                <input type="checkbox" name="hardMode" onChange={this.handleHardMode} checked={this.state.isHardModeChecked}></input>
+                <input type="checkbox" name="hardMode" onChange={this.handleHardMode} checked={this.state.hardMode}></input>
 
                 <label htmlFor="numberOption">Minimun WPM for each Word</label>
-                <select name="numberOption" value={this.state.currentMinWPM} onChange={this.minWpmDropdown}>
+                <select name="numberOption" value={this.state.minWPM} onChange={this.minWpmDropdown}>
                     <option className="mimWpmDropdown" value={15} key={15}>
                         15
                         </option>

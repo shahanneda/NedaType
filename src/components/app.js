@@ -8,8 +8,8 @@ class App extends React.Component {
         this.state = {
             indexSelected: 0,
             settings: {
-                isHardModeChecked: false,
-                currentMinWPM: 15,
+                hardMode: false,
+                minWPM: 15,
             }
         };
         this.handleOptionChange = this.handleOptionChange.bind(this);
