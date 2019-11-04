@@ -31,5 +31,6 @@ class LevelPicker extends React.Component {
         this.props.onChange(event.target.value);
         event.target.blur();
     }
+
 }
 export default LevelPicker;

@@ -7,12 +7,13 @@ class App extends React.Component {
         super(props);
         this.state = {
             indexSelected: 0,
-            isHardModeChecked: false,
-            currentMinWPM: 15,
+            settings: {
+                isHardModeChecked: false,
+                currentMinWPM: 15,
+            }
         };
         this.handleOptionChange = this.handleOptionChange.bind(this);
-        this.handleHardMode = this.handleHardMode.bind(this);
-        this.minWpmDropdown = this.minWpmDropdown.bind(this);
+        this.handleSettingsChange = this.handleSettingsChange.bind(this);
     }
 
     render() {
@@ -20,9 +21,9 @@ class App extends React.Component {
             <div key={this.props.text}>
                 Welcome to Shahan Type
                 <div className="outerTextContainer">
-                    <SettingsComponent />
+                    <SettingsComponent defaultSettings={this.state.settings} handleSettingsChange={this.handleSettingsChange} />
                     <LevelPicker options={this.props.differentTexts} onChange={this.handleOptionChange} />
-                    <TypeComponent align="justify" minSpeed={this.state.currentMinWPM} text={this.props.differentTexts[this.state.indexSelected].text} hardMode={this.state.isHardModeChecked} />
+                    <TypeComponent align="justify" settings={this.state.settings} text={this.props.differentTexts[this.state.indexSelected].text} />
                 </div>
             </div>
 
@@ -30,6 +31,17 @@ class App extends React.Component {
 
         );
     }
-
+    handleSettingsChange(newSettings) {
+        this.setState({ settings: newSettings });
+    }
+    handleOptionChange(titleOfValue) {
+        var index = -1;
+        this.props.differentTexts.map((textObject, i) => {
+            if (textObject.title == titleOfValue) {
+                index = i
+            }
+        });
+        this.setState({ indexSelected: index });
+    }
 }
 export default App;

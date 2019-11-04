@@ -5,34 +5,37 @@ export class SettingsComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            settings: {
-                isHardModeChecked: false,
-                currentMinWPM: 15,
-            },
+            settings: this.props.defaultSettings,
+        }
+        this.minWpmDropdown = this.minWpmDropdown.bind(this);
+        this.handleHardMode = this.handleHardMode.bind(this);
+    }
+
+    componentDidUpdate(oldProps, oldState) {
+        if (oldState.settings != this.state.settings) {
+            this.props.handleSettingsChange(this.state.settings);
         }
     }
     minWpmDropdown(event) {
         this.setState({
-            currentMinWPM: Math.floor(event.target.value),
+            settings: {
+                ...this.state.settings,
+                currentMinWPM: Math.floor(event.target.value)
+            }
         })
         event.target.blur();
     }
     handleHardMode(event) {
         console.log(this.state.isHardModeChecked);
         this.setState({
-            isHardModeChecked: !this.state.isHardModeChecked,
+            settings: {
+                ...this.state.settings,
+                isHardModeChecked: !this.state.settings.isHardModeChecked,
+            }
         });
         event.target.blur();
     }
-    handleOptionChange(titleOfValue) {
-        var index = -1;
-        this.props.differentTexts.map((textObject, i) => {
-            if (textObject.title == titleOfValue) {
-                index = i
-            }
-        });
-        this.setState({ indexSelected: index });
-    }
+
 
     render() {
         return (
