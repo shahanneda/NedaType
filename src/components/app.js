@@ -30,8 +30,9 @@ class App extends React.Component {
                     )} />
 
 
-                    <Route path={["/browse", "/"]}>
-                        <LevelPicker options={this.props.differentTexts} onChange={this.handleOptionChange} />
+                    <Route path={["/browse", "/"]} render={(routeProps) => {
+                        <LevelPicker routeProps={routeProps} options={this.props.differentTexts} onChange={this.handleOptionChange} />
+                    }}>
                     </Route>
 
                 </Switch>
