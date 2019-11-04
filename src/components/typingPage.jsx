@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SettingsComponent from "./settingComponent.jsx"
 import TypeComponent from './type.js';
+import { Link } from "react-router-dom"
 export class TypingPage extends Component {
     constructor(props) {
         super(props);
@@ -32,6 +33,7 @@ export class TypingPage extends Component {
         return (
             <div>
                 <div key={this.props.text}>
+                    <Link to="/browse">Back</Link>
                     <div className="outerTextContainer">
                         <SettingsComponent defaultSettings={this.state.settings} handleSettingsChange={this.handleSettingsChange} />
                         <TypeComponent align="justify" settings={this.state.settings} text={this.props.differentTexts[indexOfText].text} />
