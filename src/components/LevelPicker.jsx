@@ -1,6 +1,6 @@
 import React from 'React';
 import { throws } from 'assert';
-
+import { Link } from "react-router-dom";
 class LevelPicker extends React.Component {
     constructor(props) {
         super(props);
@@ -11,15 +11,18 @@ class LevelPicker extends React.Component {
         var options = [];
         this.props.options.map((option) => {
             options.push(
-                <option className="levelOptionDropdown" value={option.title} key={option.title}>
-                    {option.title}
-                </option>)
+                <Link to={"/type/" + option.title} key={option.title}>
+                    <div className="levelOptionDropdown" key={option.title}>
+                        {option.title}
+                    </div>
+                </Link>
+            )
         });
         return (
             <div>
-                <select value={this.state.value} onChange={this.handleChange}>
-                    {options}
-                </select>
+                {/* <select value={this.state.value} onChange={this.handleChange}> */}
+                {options}
+                {/* </select> */}
 
 
             </div>

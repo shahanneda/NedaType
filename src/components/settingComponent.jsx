@@ -34,7 +34,7 @@ export class SettingsComponent extends Component {
             }
         });
         event.target.blur();
-        this.props.handleSettingsChange(ddthis.state.settings);
+        this.props.handleSettingsChange(this.state.settings);
     }
 
 

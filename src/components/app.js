@@ -1,8 +1,10 @@
 import React from 'React'
-import TypeComponent from './type.js';
 import LevelPicker from "./LevelPicker.jsx";
-import SettingsComponent from "./settingComponent.jsx"
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
+import TypingPage from './typingPage.jsx';
+
 class App extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -13,27 +15,30 @@ class App extends React.Component {
             }
         };
         this.handleOptionChange = this.handleOptionChange.bind(this);
-        this.handleSettingsChange = this.handleSettingsChange.bind(this);
     }
 
     render() {
+        // var pageURL = window.location.href.substr(window.location.href.lastIndexOf("/") + 1).replace("%20", " ");
+        // var indexOfText = this.props.differentTexts.indexOf(pageURL);
+        // console.log(indexOfText);
+
         return (
-            <div key={this.props.text}>
-                Welcome to Shahan Type
-                <div className="outerTextContainer">
-                    <SettingsComponent defaultSettings={this.state.settings} handleSettingsChange={this.handleSettingsChange} />
-                    <LevelPicker options={this.props.differentTexts} onChange={this.handleOptionChange} />
-                    <TypeComponent align="justify" settings={this.state.settings} text={this.props.differentTexts[this.state.indexSelected].text} />
-                </div>
-            </div>
+            <Router>
+                <Switch>
+                    <Route path="/type/:text" render={((routeProps) =>
+                        <TypingPage differentTexts={this.props.differentTexts} nameOfLevel={routeProps.match.params.text} />
+                    )} />
 
 
+                    <Route path={["/browse", "/"]}>
+                        <LevelPicker options={this.props.differentTexts} onChange={this.handleOptionChange} />
+                    </Route>
 
+                </Switch>
+            </Router >
         );
     }
-    handleSettingsChange(newSettings) {
-        this.setState({ settings: newSettings });
-    }
+
     handleOptionChange(titleOfValue) {
         var index = -1;
         this.props.differentTexts.map((textObject, i) => {
