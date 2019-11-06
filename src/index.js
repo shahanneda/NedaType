@@ -34,7 +34,7 @@ const differentTexts = [
   },
   {
     title: "Speed",
-    text: "Welcome to this amazing level. In this level you get to type really really fast. It is all normal words that you might encounter in everyday life, so it is benifical for you to get fast at these words. Good job, you are doing great so far. Here are some more words that you need to type, just for the purpose of making this text as long as possible. By this time you're getting close to the end, so agian like alWays, I am proud of all the progress we arae making."
+    text: "Welcome to this amazing level. In this level you get to type really really fast. It is all normal words that you might encounter in everyday life, so it is benifical for you to get fast at these words. Good job, you are doing great so far. Here are some more words that you need to type, just for the purpose of making this text as long as possible. By this time you're getting close to the end, so agian like always, I am proud of all the progress we arae making."
   }
 
 ];
