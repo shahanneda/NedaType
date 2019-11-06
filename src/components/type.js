@@ -230,6 +230,9 @@ class TypeComponent extends React.Component {
           break;
         default:
           var characterTyped = event.key;
+          if (event.key == " ") {
+            event.preventDefault();
+          }
           // if(!event.shiftKey){
           //
           //   // characterTyped = characterTyped.toLowerCase();
