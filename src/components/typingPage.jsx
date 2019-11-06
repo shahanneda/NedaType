@@ -37,7 +37,7 @@ export class TypingPage extends Component {
 
                     <div className="outerTextContainer">
                         <SettingsComponent defaultSettings={this.state.settings} handleSettingsChange={this.handleSettingsChange} />
-                        <TypeComponent align="justify" settings={this.state.settings} text={this.props.differentTexts[indexOfText].text} />
+                        <TypeComponent align="justify" settings={this.state.settings} text={this.props.differentTexts[indexOfText].text} routeProps={this.props.routeProps} />
                     </div>
                 </div>
             </div>

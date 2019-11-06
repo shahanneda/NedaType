@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 class TypeComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -13,6 +14,7 @@ class TypeComponent extends React.Component {
       numberOfWordRepeater: 0,
       curentWordGettingRepeated: "",
       timeCurrentWordStarted: Date.now(),
+      redirectSet: false,
 
     };
     this._handleKeyDown = this._handleKeyDown.bind(this);
@@ -204,10 +206,14 @@ class TypeComponent extends React.Component {
       this.handleBackSpace();
       return;
     }
+    if (event.key == "b" && (event.ctrlKey || event.metaKey)) {// possibly move this to a separet compoennt
+      this.setState({ redirectSet: true });
+      return;// to prevent memory leak
+    }
     let keycode = event.keyCode
     var valid = // all this is to now have non typblee keys life shift shsow up
       (keycode > 47 && keycode < 58) || // number keys
-      keycode == 32 ||// keycode == 13 || // spacebar & return key(s) (if you want to allow carriage returns)
+      keycode == 32 ||// keycode == 13 || // spacebar & return key(s) 
       (keycode > 64 && keycode < 91) || // letter keys
       (keycode > 95 && keycode < 112) || // numpad keys
       (keycode > 185 && keycode < 193) || // ;=,-./` (in order)
@@ -252,6 +258,7 @@ class TypeComponent extends React.Component {
       }
     }
     return <div>
+      {this.state.redirectSet ? <Redirect to="/browse" /> : ""}
       <WpmCounter startTime={this.state.timeOfStart} charactersTyped={this.state.charTypedSinceStart} />
       <div className="text">
         <span className="alreadyTypedText">

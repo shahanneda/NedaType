@@ -27,7 +27,7 @@ class App extends React.Component {
                 <HeaderComponent />
                 <Switch>
                     <Route path="/type/:text" render={((routeProps) =>
-                        <TypingPage differentTexts={this.props.differentTexts} nameOfLevel={routeProps.match.params.text} />
+                        <TypingPage differentTexts={this.props.differentTexts} nameOfLevel={routeProps.match.params.text} routeProps={routeProps} />
                     )} />
 
 
