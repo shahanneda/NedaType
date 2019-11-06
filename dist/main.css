@@ -51,3 +51,35 @@ span.wpmCounterOnText {
   margin-top: -19px;
   margin-left: -35.5px;
 }
+.levelsWrapper{
+  border:1px solid black;
+  margin:10px 10px 10px 10px;
+  color: white;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  
+  
+}
+.levelWrapperBox{
+  margin: 2em;
+  text-align: center;
+  padding: 0.3em;
+  padding-bottom: 3em;
+  padding-top: 3em;
+  background-color: cornflowerblue;
+  color: white;
+  text-decoration: none;
+
+  /* padding-bottom: 50%; */
+  /* height: 0px;; */
+  /* width: 50%; */
+}
+.levelName{
+  text-align: center;
+  position: relative;
+  top:50%;
+  text-decoration: none;
+}
+a{
+  text-decoration: none;
+}

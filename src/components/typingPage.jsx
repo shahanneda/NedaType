@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SettingsComponent from "./settingComponent.jsx"
 import TypeComponent from './type.js';
-import { Link } from "react-router-dom"
+import { Link, Redirect } from "react-router-dom"
 export class TypingPage extends Component {
     constructor(props) {
         super(props);
@@ -32,6 +32,7 @@ export class TypingPage extends Component {
         }
         return (
             <div>
+                {/* {indexOfText == -1 ? <Redirect to="/browse"/>} */}
                 <div key={this.props.text}>
                     <Link to="/browse">Back</Link>
                     <div className="outerTextContainer">
