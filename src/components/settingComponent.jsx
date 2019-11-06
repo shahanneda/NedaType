@@ -12,6 +12,7 @@ export class SettingsComponent extends Component {
             this.state = {
                 settings: JSON.parse(localStorage.getItem("settings"))
             }
+            this.props.handleSettingsChange(this.state.settings);
         }
         this.minWpmDropdown = this.minWpmDropdown.bind(this);
         this.handleHardMode = this.handleHardMode.bind(this);

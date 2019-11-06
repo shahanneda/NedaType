@@ -13,7 +13,7 @@ class TypeComponent extends React.Component {
       timeOfStart: -999,
       numberOfWordRepeater: 0,
       curentWordGettingRepeated: "",
-      timeCurrentWordStarted: Date.now(),
+      timeCurrentWordStarted: null,
       redirectSet: false,
 
     };
@@ -41,7 +41,7 @@ class TypeComponent extends React.Component {
         charTypedSinceStart: 0,
         numberOfWordRepeater: 0,
         curentWordGettingRepeated: "",
-        timeCurrentWordStarted: Date.now(),
+        timeCurrentWordStarted: null,
         arrayOfWordWPMs: [],
 
       });
@@ -60,13 +60,11 @@ class TypeComponent extends React.Component {
     }
     if (key === this.state.currentLetter) {
 
-      if (this.moveCurrentLetterToNextLetter() == " ") {
+      if (this.moveCurrentLetterToNextLetter() == " " && this.state.timeCurrentWordStarted != null) {//if user types text too slow
         let wordArray = this.getWordCurrentlyTyping().split(" ");
         let wordJustCompleted = wordArray[1];
         let nextWord = wordArray[2];
         console.log(wordJustCompleted);
-
-
 
         let timeCurrentWordTook = Date.now() - this.state.timeCurrentWordStarted;
         let mathNumberOfWordsType = wordJustCompleted.length / 5; // assuimg wpm at 5 letter word
@@ -80,12 +78,17 @@ class TypeComponent extends React.Component {
           // timeCurrentWordStarted: Da//te.now(),
         });
 
-        if (speedWordTypedAt < this.props.settings.minWPM && wordJustCompleted.length > 1) {
-          this.setState({
+        if (speedWordTypedAt < this.props.settings.minWPM && wordJustCompleted.length > 1) {//ignore for 1 letter words since wpm is meaningless:
+          this.setState({// user typed text too slow 
             screenText: wordJustCompleted + " " + this.state.screenText,
           });
-        }
 
+        }
+      } else if (this.state.timeCurrentWordStarted == null) {// we must be on first word, forgive mistake on first word to make sure clock is started properly`
+        this.setState({
+          timeCurrentWordStarted: Date.now(),
+          // arrayOfWordWPMs: this.state.arrayOfMistakes.concat([999])// marker to ignore word
+        })
       }
     } else {//user made error  
       this.addLetterToTypedText(key);
