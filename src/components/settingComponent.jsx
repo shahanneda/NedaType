@@ -7,6 +7,12 @@ export class SettingsComponent extends Component {
         this.state = {
             settings: this.props.defaultSettings,
         }
+        if (localStorage.getItem("settings") !== null) {
+            console.log("geting");
+            this.state = {
+                settings: JSON.parse(localStorage.getItem("settings"))
+            }
+        }
         this.minWpmDropdown = this.minWpmDropdown.bind(this);
         this.handleHardMode = this.handleHardMode.bind(this);
     }
@@ -14,6 +20,7 @@ export class SettingsComponent extends Component {
     componentDidUpdate(oldProps, oldState) {
         if (oldState.settings != this.state.settings) {
             this.props.handleSettingsChange(this.state.settings);
+            localStorage.setItem("settings", JSON.stringify(this.state.settings));
         }
     }
     minWpmDropdown(event) {
@@ -43,10 +50,10 @@ export class SettingsComponent extends Component {
             <div>
 
                 <label htmlFor="hardMode">Hard Mode:</label>
-                <input type="checkbox" name="hardMode" onChange={this.handleHardMode} checked={this.state.hardMode}></input>
+                <input type="checkbox" name="hardMode" onChange={this.handleHardMode} checked={this.state.settings.hardMode}></input>
 
                 <label htmlFor="numberOption">Minimun WPM for each Word</label>
-                <select name="numberOption" value={this.state.minWPM} onChange={this.minWpmDropdown}>
+                <select name="numberOption" value={this.state.settings.minWPM} onChange={this.minWpmDropdown}>
                     <option className="mimWpmDropdown" value={15} key={15}>
                         15
                         </option>
