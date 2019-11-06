@@ -206,6 +206,7 @@ class TypeComponent extends React.Component {
   }
   _handleKeyDown(event) {
     if (event.keyCode == 8) {
+      event.preventDefault();
       this.handleBackSpace();
       return;
     }
@@ -213,6 +214,7 @@ class TypeComponent extends React.Component {
       this.setState({ redirectSet: true });
       return;// to prevent memory leak
     }
+
     let keycode = event.keyCode
     var valid = // all this is to now have non typblee keys life shift shsow up
       (keycode > 47 && keycode < 58) || // number keys
