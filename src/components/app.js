@@ -2,7 +2,7 @@ import React from 'React'
 import LevelPicker from "./LevelPicker.jsx";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import TypingPage from './typingPage.jsx';
-
+import HeaderComponent from './HeaderComponent'
 class App extends React.Component {
 
     constructor(props) {
@@ -24,6 +24,7 @@ class App extends React.Component {
 
         return (
             <Router>
+                <HeaderComponent />
                 <Switch>
                     <Route path="/type/:text" render={((routeProps) =>
                         <TypingPage differentTexts={this.props.differentTexts} nameOfLevel={routeProps.match.params.text} />
@@ -31,7 +32,10 @@ class App extends React.Component {
 
 
                     <Route path={["/browse", "/"]} render={(routeProps) => (
-                        <LevelPicker routeProps={routeProps} options={this.props.differentTexts} onChange={this.handleOptionChange} />
+                        <div>
+
+                            <LevelPicker routeProps={routeProps} options={this.props.differentTexts} onChange={this.handleOptionChange} />
+                        </div>
                     )}>
                     </Route>
 

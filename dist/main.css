@@ -52,7 +52,6 @@ span.wpmCounterOnText {
   margin-left: -35.5px;
 }
 .levelsWrapper{
-  border:1px solid black;
   margin:10px 10px 10px 10px;
   color: white;
   display: grid;
@@ -82,4 +81,41 @@ span.wpmCounterOnText {
 }
 a{
   text-decoration: none;
+}
+
+.headerWrapper{
+  background-color: #00c0ff;
+  position: fixed;
+  top:0px;
+  width:100vw;
+  height: 10vh;
+}
+
+.siteTitle{
+  color: white;
+  font-size: large;
+  font-style: italic;
+  text-align: center;
+  margin-top: 3vh;
+  font-size: xx-large;
+  font-family: sans-serif;
+}
+html{
+  margin: 0px;
+  
+}
+body{
+  /* padding: 0px; */
+  margin: 0px;
+  margin-top: 10vh;;
+}
+.backButton{
+  float: right;
+  padding: 10px;
+  top: -5vh;
+  position: relative;
+  margin: 0px 5vh 0px 0px;
+  text-decoration: none;
+  color: white;
+  background-color: #7efff32e;
 }
