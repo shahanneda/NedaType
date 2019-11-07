@@ -256,7 +256,10 @@ class TypeComponent extends React.Component {
         formattedTypedText.push(<span key={typedText.charAt(i) + i} className={typedText.charAt(i) == " " ? "error spaceError" : "error"}>{typedText.charAt(i)}</span>);
       } else if (typedText.charAt(i) == " ") { // checks if the current word has ended to add wpm counter, also checks to make sure current word was not less than 3 by using the -999 marker
         if (this.state.arrayOfWordWPMs[wordCounter] != 999) {
-          formattedTypedText.push(<span key={wordCounter} className="wpmCounterOnText">{this.state.arrayOfWordWPMs[wordCounter]} WPM</span>);
+          var classNames = "wpmCounterOnText " + ((this.state.arrayOfWordWPMs[wordCounter] < this.props.settings.minWPM) ? " redWPM" : "")
+          console.log(classNames);
+
+          formattedTypedText.push(<span key={wordCounter} className={classNames}>{this.state.arrayOfWordWPMs[wordCounter]} WPM</span>);
         }
         formattedTypedText.push(" ");
         wordCounter++;
@@ -280,7 +283,7 @@ class TypeComponent extends React.Component {
 
         {this.state.screenText}
       </div>
-    </div>;
+    </div >;
   }
 }
 
