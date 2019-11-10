@@ -3,6 +3,7 @@ import LevelPicker from "./LevelPicker.jsx";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import TypingPage from './typingPage.jsx';
 import HeaderComponent from './HeaderComponent'
+import SettingsComponent from './settingComponent.jsx'
 class App extends React.Component {
 
     constructor(props) {
@@ -15,6 +16,7 @@ class App extends React.Component {
             }
         };
         this.handleOptionChange = this.handleOptionChange.bind(this);
+        this.handleSettingsChange = this.handleSettingsChange.bind(this);
     }
 
     render() {
@@ -27,7 +29,10 @@ class App extends React.Component {
                 <HeaderComponent />
                 <Switch>
                     <Route path="/type/:text" render={((routeProps) =>
-                        <TypingPage differentTexts={this.props.differentTexts} nameOfLevel={routeProps.match.params.text} routeProps={routeProps} />
+                        <div>
+                            <SettingsComponent defaultSettings={this.state.settings} handleSettingsChange={this.handleSettingsChange} />
+                            <TypingPage differentTexts={this.props.differentTexts} nameOfLevel={routeProps.match.params.text} routeProps={routeProps} />
+                        </div>
                     )} />
 
 
@@ -52,6 +57,10 @@ class App extends React.Component {
             }
         });
         this.setState({ indexSelected: index });
+    }
+
+    handleSettingsChange(newSettings) {
+        this.setState({ settings: newSettings });
     }
 }
 export default App;

@@ -270,6 +270,7 @@ class TypeComponent extends React.Component {
     }
     return <div>
       {this.state.redirectSet ? <Redirect to="/browse" /> : ""}
+
       <WpmCounter startTime={this.state.timeOfStart} charactersTyped={this.state.charTypedSinceStart} />
       <div className="text">
         <span className="alreadyTypedText">
@@ -320,8 +321,8 @@ class WpmCounter extends React.Component {
   render() {
 
     return (
-      <div>
-        Current WPM = {Math.floor(this.state.wpm)}
+      <div className="wpmCounterContainer">
+        <span className="wpmCounterText"> {Math.floor(this.state.wpm)} WPM</span>
       </div>
     );
   }

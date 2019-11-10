@@ -118,8 +118,20 @@ body{
   text-decoration: none;
   color: white;
   background-color: #7efff32e;
+  font-family: sans-serif;
 }
 
 .redWPM{
   color:red !important;
+}
+.wpmCounterContainer{
+  background: #00c0fee3;
+  text-align: center;
+  color: white;
+  padding: 10px;
+}
+
+.wpmCounterText{
+  font-family: sans-serif;
+  font-style: italic;
 }

@@ -48,42 +48,42 @@ export class SettingsComponent extends Component {
 
     render() {
         return (
-            <div>
+            <div className="settingsContainer">
 
-                <label htmlFor="hardMode">Hard Mode:</label>
-                <input type="checkbox" name="hardMode" onChange={this.handleHardMode} checked={this.state.settings.hardMode}></input>
+                <label htmlFor="hardMode" className="hardModeLabel">Hard Mode:</label>
+                <input type="checkbox" classname="hardModeCheckbox" name="hardMode" onChange={this.handleHardMode} checked={this.state.settings.hardMode}></input>
 
-                <label htmlFor="numberOption">Minimun WPM for each Word</label>
-                <select name="numberOption" value={this.state.settings.minWPM} onChange={this.minWpmDropdown}>
-                    <option className="mimWpmDropdown" value={15} key={15}>
+                <label htmlFor="numberOption" className="minWPMLabel">Minimun WPM </label>
+                <select name="numberOption" value={this.state.settings.minWPM} onChange={this.minWpmDropdown} className="minWPMDropDown">
+                    <option className="mimWpmDropdownLabel" value={15} key={15}>
                         15
                         </option>
 
-                    <option className="mimWpmDropdown" value={30} key={30}>
+                    <option className="mimWpmDropdownLabel" value={30} key={30}>
                         30
                         </option>
 
-                    <option className="mimWpmDropdown" value={50} key={50}>
+                    <option className="mimWpmDropdownLabel" value={50} key={50}>
                         50
                         </option>
 
-                    <option className="mimWpmDropdown" value={60} key={60}>
+                    <option className="mimWpmDropdownLabel" value={60} key={60}>
                         60
                         </option>
 
-                    <option className="mimWpmDropdown" value={75} key={75}>
+                    <option className="mimWpmDropdownLabel" value={75} key={75}>
                         75
                         </option>
-                    <option className="mimWpmDropdown" value={85} key={85}>
+                    <option className="mimWpmDropdownLabel" value={85} key={85}>
                         85
                         </option>
-                    <option className="mimWpmDropdown" value={100} key={100}>
+                    <option className="mimWpmDropdownLabel" value={100} key={100}>
                         100
                         </option>
-                    <option className="mimWpmDropdown" value={120} key={120}>
+                    <option className="mimWpmDropdownLabel" value={120} key={120}>
                         120
                         </option>
-                    <option className="mimWpmDropdown" value={150} key={150}>
+                    <option className="mimWpmDropdownLabel" value={150} key={150}>
                         150
                         </option>
                 </select>

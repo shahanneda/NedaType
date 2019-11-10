@@ -12,12 +12,8 @@ export class TypingPage extends Component {
                 minWPM: 15,
             }
         };
-        this.handleSettingsChange = this.handleSettingsChange.bind(this);
     }
 
-    handleSettingsChange(newSettings) {
-        this.setState({ settings: newSettings });
-    }
 
     render() {
         var indexOfText = 0;
@@ -36,8 +32,7 @@ export class TypingPage extends Component {
                 <div key={this.props.text}>
 
                     <div className="outerTextContainer">
-                        <SettingsComponent defaultSettings={this.state.settings} handleSettingsChange={this.handleSettingsChange} />
-                        <TypeComponent align="justify" settings={this.state.settings} text={this.props.differentTexts[indexOfText].text} routeProps={this.props.routeProps} />
+                        <TypeComponent align="justify" settings={this.state.settings} text={this.props.differentTexts[indexOfText].text} />
                     </div>
                 </div>
             </div>
