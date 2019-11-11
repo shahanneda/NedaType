@@ -272,17 +272,18 @@ class TypeComponent extends React.Component {
       {this.state.redirectSet ? <Redirect to="/browse" /> : ""}
 
       <WpmCounter startTime={this.state.timeOfStart} charactersTyped={this.state.charTypedSinceStart} />
-      <div className="text">
-        <span className="alreadyTypedText">
-          {formattedTypedText}
-        </span>
-        <span className="currentLetter">
-          <span className={extraCssName}>
-            {this.state.currentLetter == " " ? "_" : this.state.currentLetter}
+      <div className="outerContainerText">
+        <div className="text">
+          <span className="alreadyTypedText">
+            {formattedTypedText}
           </span>
-        </span>
-
-        {this.state.screenText}
+          <span className="currentLetter">
+            <span className={extraCssName}>
+              {this.state.currentLetter == " " ? "_" : this.state.currentLetter}
+            </span>
+          </span>
+          {this.state.screenText}
+        </div>
       </div>
     </div >;
   }
