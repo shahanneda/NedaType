@@ -7,10 +7,6 @@ export class TypingPage extends Component {
         super(props);
         this.state = {
             indexSelected: 0,
-            settings: {
-                hardMode: false,
-                minWPM: 15,
-            }
         };
     }
 
@@ -32,7 +28,7 @@ export class TypingPage extends Component {
                 <div key={this.props.text}>
 
                     <div className="outerTextContainer">
-                        <TypeComponent align="justify" settings={this.state.settings} text={this.props.differentTexts[indexOfText].text} />
+                        <TypeComponent align="justify" settings={this.props.settings} text={this.props.differentTexts[indexOfText].text} />
                     </div>
                 </div>
             </div>

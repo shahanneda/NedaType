@@ -86,11 +86,17 @@ a{
 .headerWrapper{
   background-color: #00c0ff;
   position: fixed;
-  top:0px;
-  width:100vw;
+  top: 0px;
+  width: 100vw;
   height: 10vh;
+  display: table;
+  table-layout: fixed;
 }
-
+.headerWrapper:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 .siteTitle{
   color: white;
   font-size: large;
@@ -99,6 +105,8 @@ a{
   margin-top: 3vh;
   font-size: xx-large;
   font-family: sans-serif;
+  float: left;
+  width: 33.33%;
 }
 html{
   margin: 0px;
@@ -119,6 +127,8 @@ body{
   color: white;
   background-color: #7efff32e;
   font-family: sans-serif;
+  /* float: left;
+  width: 33.33%; */
 }
 
 .redWPM{
@@ -134,4 +144,45 @@ body{
 .wpmCounterText{
   font-family: sans-serif;
   font-style: italic;
+}
+.settingsContainer{
+  float: left;
+  display: inline-block;
+  margin-right: auto;
+  float: left;
+  width: 33.33%;
+  
+}
+.hardModeContainer{
+  margin: 1em;
+  color: white;
+  background: #beffeb63;
+  padding: 20px;
+  /* width: 2em; */
+  display: inline-block;
+}
+.minWPMContainer{
+  margin: 1em;
+  color: white;
+  background: #beffeb63;
+  padding: 20px;
+  /* width: 2em; */
+  display: inline-block;
+}
+.hardModeLabel{
+
+}
+.hardModeCheckbox{
+
+}
+.minWPMLabel{
+
+}
+
+.minWPMDropdown{
+
+}
+
+.minWpmDropwdownLabel{
+
 }

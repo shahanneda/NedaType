@@ -26,12 +26,12 @@ class App extends React.Component {
 
         return (
             <Router>
-                <HeaderComponent />
                 <Switch>
                     <Route path="/type/:text" render={((routeProps) =>
                         <div>
-                            <SettingsComponent defaultSettings={this.state.settings} handleSettingsChange={this.handleSettingsChange} />
-                            <TypingPage differentTexts={this.props.differentTexts} nameOfLevel={routeProps.match.params.text} routeProps={routeProps} />
+                            <HeaderComponent typingPage={true} defaultSettings={this.state.settings} handleSettingsChange={this.handleSettingsChange} />
+                            <TypingPage differentTexts={this.props.differentTexts} nameOfLevel={routeProps.match.params.text} routeProps={routeProps} settings={this.state.settings} />
+
                         </div>
                     )} />
 
@@ -39,6 +39,7 @@ class App extends React.Component {
                     <Route path={["/browse", "/"]} render={(routeProps) => (
                         <div>
 
+                            <HeaderComponent typeingPage={false} />
                             <LevelPicker routeProps={routeProps} options={this.props.differentTexts} onChange={this.handleOptionChange} />
                         </div>
                     )}>
