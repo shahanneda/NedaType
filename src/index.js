@@ -9,8 +9,8 @@ const differentTexts = [
     text: "Type this text and it will help you get faster! Here is some more filler text to make you better at typing. Here are some harder letters to type: / . , * & ^ %. Have fun!"
   },
   {
-    title: "First Real level?",
-    text: "Ok So you have finished the first level? Good job I am proud of you, again here are some more symbols for typing % $ % % ^ %. Great Job!"
+    title: "The Key",
+    text: "Nice job on finishing the first level! We are sure that you are already making lots of progress. One very important thing to remember is that the key to improvement is consistency. Everyday you should be working on the skills you want to improve, even days that you do not feel like working. So make sure to come back and work on your typing a little everyday. Even 5 or 10 minutes are good enough, as long as you keep coming back every single day. "
   },
   {
     title: "Common patterns 1: ing",
@@ -35,6 +35,10 @@ const differentTexts = [
   {
     title: "Speed",
     text: "Welcome to this amazing level. In this level you get to type really really fast. It is all normal words that you might encounter in everyday life, so it is benifical for you to get fast at these words. Good job, you are doing great so far. Here are some more words that you need to type, just for the purpose of making this text as long as possible. By this time you're getting close to the end, so again like always, I am proud of all the progress we are making."
+  },
+  {
+    title: "Time",
+    text: "We all have a limited time. Time runs out, ime ime ime ime ime. Some times we also have a time limit on the tasks we need to do. For example right now, someone in the world needs to be working on their english project, but instead, that someone is typing out this level. Every second goes by, second by second, time after time. ime ime ime."
   }
 
 ];
