@@ -39,6 +39,14 @@ const differentTexts = [
   {
     title: "Time",
     text: "We all have a limited time. Time runs out, ime ime ime ime ime. Some times we also have a time limit on the tasks we need to do. For example right now, someone in the world needs to be working on their english project, but instead, that someone is typing out this level. Every second goes by, second by second, time after time. ime ime ime."
+  },
+  {
+    title: "Test",
+    text: "What is a test? A test is a test of your abilities.  Some test are not difficult, but some other tests can be very difficult, which is why I am writing this level right now. Instead of going and studing for the extremly difficult test I have to do, I am sitting here and typing this level out. Word by word, leter by letter, keystroke by keystroke."
+  },
+  {
+    title: "Finger roll!",
+    text: "Firstly, right hand, jkl; jkl; jkl; jkl; jkl; jkl; jkl; jkl; jkl; jkl; ;lkj ;lkj ;lkj ;lkj ;lkj ;lkj ;lkj ;lkj ;lkj ;lkj jkl; jkl; jkl; jkl; jkl; jkl; ;lkj ;lkj ;lkj Now on to the left hand: asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf fdsa fdsa fdsa fdsa fdsa fdsa fdsa fdsa fdsa fdsa asdf asdf asdf asdf asdf."
   }
 ];
 
