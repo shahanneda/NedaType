@@ -47,7 +47,12 @@ const differentTexts = [
   {
     title: "Finger roll!",
     text: "Firstly, right hand, jkl; jkl; jkl; jkl; jkl; jkl; jkl; jkl; jkl; jkl; ;lkj ;lkj ;lkj ;lkj ;lkj ;lkj ;lkj ;lkj ;lkj ;lkj jkl; jkl; jkl; jkl; jkl; jkl; ;lkj ;lkj ;lkj Now on to the left hand: asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf fdsa fdsa fdsa fdsa fdsa fdsa fdsa fdsa fdsa fdsa asdf asdf asdf asdf asdf."
+  },
+  {
+    title: ""
+
   }
+
 ];
 
 
