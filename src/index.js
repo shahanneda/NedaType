@@ -49,7 +49,8 @@ const differentTexts = [
     text: "Firstly, right hand, jkl; jkl; jkl; jkl; jkl; jkl; jkl; jkl; jkl; jkl; ;lkj ;lkj ;lkj ;lkj ;lkj ;lkj ;lkj ;lkj ;lkj ;lkj jkl; jkl; jkl; jkl; jkl; jkl; ;lkj ;lkj ;lkj Now on to the left hand: asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf fdsa fdsa fdsa fdsa fdsa fdsa fdsa fdsa fdsa fdsa asdf asdf asdf asdf asdf."
   },
   {
-    title: ""
+    title: "English class",
+    text: "My friends and I are in english class. We are procrastinating because we are bored. Nevermind, my deskmate corrected me saying that he was done. English class is lowkey boring. I'm simply making this typing test in order to escape the inevitable death approaching me *cough* I mean literally english and speeches are going to be the epitaph of me. The deskmate is clearly bored as well. I is glancing over to see what I am doing from time to time and spinning his pencil. This test is becoming too long, so long suckers."
 
   }
 
