@@ -215,7 +215,7 @@ class TypeComponent extends React.Component {
       return;// to prevent memory leak
     }
 
-    let keycode = event.keyCode
+    let keycode = event.keyCode;
     console.log("Keycode of key pressed" + keycode);
     var valid = // all this is to now have non typblee keys life shift shsow up
       (keycode > 47 && keycode < 58) || // number keys
