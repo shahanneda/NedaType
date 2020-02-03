@@ -23,12 +23,16 @@ class App extends React.Component {
         // var pageURL = window.location.href.substr(window.location.href.lastIndexOf("/") + 1).replace("%20", " ");
         // var indexOfText = this.props.differentTexts.indexOf(pageURL);
         // console.log(indexOfText);
-
+        if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+            alert("Some features not currently supported in Firefox, please switch to chrome!");
+        }
         return (
             <Router>
+
                 <Switch>
                     <Route path="/type/:text" render={((routeProps) =>
                         <div>
+
                             <HeaderComponent typingPage={true} defaultSettings={this.state.settings} handleSettingsChange={this.handleSettingsChange} />
                             <TypingPage differentTexts={this.props.differentTexts} nameOfLevel={routeProps.match.params.text} routeProps={routeProps} settings={this.state.settings} />
 
