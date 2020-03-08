@@ -222,8 +222,8 @@ class TypeComponent extends React.Component {
       keycode == 32 ||// keycode == 13 || // spacebar & return key(s) 
       (keycode > 64 && keycode < 91) || // letter keys
       (keycode > 95 && keycode < 112) || // numpad keys
-      (keycode > 185 && keycode < 193) || // ;=,-./` (in order)
-      (keycode > 218 && keycode < 223);   // [\]' (in order);
+      (keycode > 185 && keycode < 193) || // ;=,-./` 
+      (keycode > 218 && keycode < 223) || (keycode == 59); // for somereason on firefox the keycode for ; is 59 instead of the rest
     if (valid) {
       switch (event.key) {
         case event.keyCode === 65 || event.key == "Shift":
