@@ -24,7 +24,7 @@ class App extends React.Component {
         // var indexOfText = this.props.differentTexts.indexOf(pageURL);
         // console.log(indexOfText);
         if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
-            alert("Some features not currently supported in Firefox, please switch to chrome!");
+            console.warn("Some features not currently supported in Firefox, please switch to chrome!");
         }
         return (
             <Router>
