@@ -173,6 +173,12 @@ class TypeComponent extends React.Component {
     var screenText = this.state.screenText;// what we need to type
     var alreadyTypedText = this.state.alreadyTypedText; //already typed
     var arrayOfMistakes = this.state.arrayOfMistakes;
+
+
+    if(alreadyTypedText.length == 0){
+      return;
+    }
+
     if (arrayOfMistakes.includes(alreadyTypedText.length - 1)) {
       alreadyTypedText = alreadyTypedText.substr(0, alreadyTypedText.length - 1);
       arrayOfMistakes.pop();
