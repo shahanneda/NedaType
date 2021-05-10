@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TypeComponent from "./components/type.js"
 import App from "./components/app.js";
-const title = 'Shahan Type';
+const title = 'NedaType';
+
 const differentTexts = [
   {
     title: "Intro",
