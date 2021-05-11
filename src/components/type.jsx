@@ -222,16 +222,16 @@ class TypeComponent extends React.Component {
     let bounding = this.cursorBackgroundMarkerRef.current.getBoundingClientRect()
     console.log(bounding.left + "px");
     this.cursorBackgroundRef.current.style.left = bounding.left + "px";
-    this.cursorBackgroundRef.current.style.top = (bounding.top+10) + "px";
+    this.cursorBackgroundRef.current.style.top = (bounding.top+7) + "px";
     console.log(this.cursorBackgroundMarkerRef.current)
   }
 
   _handleKeyDown(event) {
-    this.updateBackgroundCursor()
 
     if (event.keyCode == 8) {
       event.preventDefault();
       this.handleBackSpace();
+      this.updateBackgroundCursor()
       return;
     }
     if (event.key == "b" && (event.ctrlKey || event.metaKey)) {// possibly move this to a separet compoennt
@@ -263,6 +263,7 @@ class TypeComponent extends React.Component {
           //   // characterTyped = characterTyped.toLowerCase();
           // }
           this.handleKeyTyped(characterTyped);
+          this.updateBackgroundCursor()
           break;
       }
     }
@@ -305,10 +306,10 @@ class TypeComponent extends React.Component {
           <span className="alreadyTypedText">
             {formattedTypedText}
           </span>
-          <span className={"currentLetter " +extraCssName} key={Date.now()} >
+          {/* <span ref={this.cursorBackgroundMarkerRef} className={"cursorBackgroundMarker"}></span> */}
+          <span ref={this.cursorBackgroundMarkerRef} className={"currentLetter " +extraCssName} key={Date.now()} >
               {this.state.currentLetter == " " ? "_" : this.state.currentLetter}
           </span>
-          <span ref={this.cursorBackgroundMarkerRef} className={"cursorBackgroundMarker"}></span>
           {this.state.screenText}
         </div>
       </div>

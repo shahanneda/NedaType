@@ -17,11 +17,11 @@ export class HeaderComponent extends Component {
         return (
 
             <div className="headerWrapper">
-                {this.props.typingPage ?
+                {/* {this.props.typingPage ?
                     <SettingsComponent defaultSettings={this.props.defaultSettings} handleSettingsChange={this.props.handleSettingsChange} /> : ""
                 }
                 <div className="siteTitle">NEDATYPE</div>
-                {!isOnBrowsePage ? <Link to="/browse" className="backButton">&larr; Back</Link> : ""}
+                {!isOnBrowsePage ? <Link to="/browse" className="backButton">&larr; Back</Link> : ""} */}
 
             </div>
         );

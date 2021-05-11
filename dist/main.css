@@ -48,7 +48,7 @@
 }
 
 .cursorBackground{
-  background-color: green;
+  background-color: rgba(108, 108, 108, 0.995);
   /* width:100px; */
   /* height: 100px;; */
   position: absolute;
