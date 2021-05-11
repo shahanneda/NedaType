@@ -15,9 +15,35 @@
 .outerTextContainer{
   width: 100%;
 }
+@keyframes colorfulCursorAnimation {
+  0%   {background-color: red;}
+  25%  {background-color: yellow;}
+  50%  {background-color: blue;}
+  100% {background-color: green;}
+   /*0%  {background-color: cyan;} 
+  50%  {background-color: rgba(39, 39, 235, 0.235);}
+  100% {background-color: lightblue;}  */
+}
+
+/* TODO: Add this as an option
+.colorfulCurserAnimation{
+  animation-name: colorfulCursorAnimation;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+*/
+
+@keyframes smoothCursorAnimation {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
 .currentLetter{
   background-color: lightgrey;
   /* word-spacing: 50px; */
+  /* animation-name: colorfulCursorAnimation; */
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
 
 }
 .alreadyTypedText{
