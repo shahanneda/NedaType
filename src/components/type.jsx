@@ -1,5 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import WPMCounter from "./WPMCounter"
+
 class TypeComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -175,6 +177,7 @@ class TypeComponent extends React.Component {
     var arrayOfMistakes = this.state.arrayOfMistakes;
 
 
+    // we dont want backspace if there is nothing to go back(start)
     if(alreadyTypedText.length == 0){
       return;
     }
@@ -278,7 +281,7 @@ class TypeComponent extends React.Component {
     return <div>
       {this.state.redirectSet ? <Redirect to="/browse" /> : ""}
 
-      <WpmCounter startTime={this.state.timeOfStart} charactersTyped={this.state.charTypedSinceStart} />
+      <WPMCounter startTime={this.state.timeOfStart} charactersTyped={this.state.charTypedSinceStart} />
       <div className="outerContainerText">
         <div className="text">
           <span className="alreadyTypedText">
@@ -296,43 +299,4 @@ class TypeComponent extends React.Component {
   }
 }
 
-class WpmCounter extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      secondSinceStart: (Date.now() - this.props.startTime) / 1000,
-      charsTyped: this.props.charactersTyped,
-      wpm: 0
-    };
-  }
-  componentDidUpdate(oldProps) {
-
-
-    if (oldProps.charactersTyped != this.state.charsTyped) {
-
-      // 
-
-      this.setState({
-        secondSinceStart: (Date.now() - this.props.startTime) / 1000,
-        charsTyped: this.props.charactersTyped,
-      });
-      var wordsTyped = this.props.charactersTyped / 5;
-      var minPast = this.state.secondSinceStart / 60;
-      this.setState({
-        wpm: wordsTyped / minPast,
-      });
-      if (this.props.startTime == -999) {
-        this.setState({ wpm: 0 });
-      }
-    }
-  }
-  render() {
-
-    return (
-      <div className="wpmCounterContainer">
-        <span className="wpmCounterText"> {Math.floor(this.state.wpm)} WPM</span>
-      </div>
-    );
-  }
-}
 export default TypeComponent;
