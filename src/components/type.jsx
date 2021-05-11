@@ -19,6 +19,11 @@ class TypeComponent extends React.Component {
       redirectSet: false,
 
     };
+
+    this.cursorBackgroundRef = React.createRef();
+    this.cursorBackgroundMarkerRef = React.createRef();
+
+    this.updateBackgroundCursor = this.updateBackgroundCursor.bind(this);
     this._handleKeyDown = this._handleKeyDown.bind(this);
     this.handleKeyTyped = this.handleKeyTyped.bind(this);
     this.moveCurrentLetterToNextLetter = this.moveCurrentLetterToNextLetter.bind(this);
@@ -50,6 +55,7 @@ class TypeComponent extends React.Component {
     }
   }
   handleKeyTyped(key) {
+    
     if (this.state.timeOfStart == -999) {
       this.setState({
         timeOfStart: Date.now(),
@@ -209,11 +215,20 @@ class TypeComponent extends React.Component {
       charTypedSinceStart: this.state.charTypedSinceStart + 1,
     });
     return nextLetter;
-
-
-
   }
+
+  updateBackgroundCursor(){
+    // this.cursorBackgroundRef.current.style.backgroundColor = "#" + ((1<<24)*Math.random() | 0).toString(16);
+    let bounding = this.cursorBackgroundMarkerRef.current.getBoundingClientRect()
+    console.log(bounding.left + "px");
+    this.cursorBackgroundRef.current.style.left = bounding.left + "px";
+    this.cursorBackgroundRef.current.style.top = (bounding.top+10) + "px";
+    console.log(this.cursorBackgroundMarkerRef.current)
+  }
+
   _handleKeyDown(event) {
+    this.updateBackgroundCursor()
+
     if (event.keyCode == 8) {
       event.preventDefault();
       this.handleBackSpace();
@@ -282,16 +297,18 @@ class TypeComponent extends React.Component {
       {this.state.redirectSet ? <Redirect to="/browse" /> : ""}
 
       <WPMCounter startTime={this.state.timeOfStart} charactersTyped={this.state.charTypedSinceStart} />
+     
+      <span ref={this.cursorBackgroundRef} className={"cursorBackground"}>&nbsp;</span>
+
       <div className="outerContainerText">
         <div className="text">
           <span className="alreadyTypedText">
             {formattedTypedText}
           </span>
-          <span className="currentLetter">
-            <span className={extraCssName}>
+          <span className={"currentLetter " +extraCssName} key={Date.now()} >
               {this.state.currentLetter == " " ? "_" : this.state.currentLetter}
-            </span>
           </span>
+          <span ref={this.cursorBackgroundMarkerRef} className={"cursorBackgroundMarker"}></span>
           {this.state.screenText}
         </div>
       </div>

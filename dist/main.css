@@ -39,13 +39,23 @@
 }
 
 .currentLetter{
-  background-color: lightgrey;
+  background-color: clear;
   /* word-spacing: 50px; */
   /* animation-name: colorfulCursorAnimation; */
   animation-duration: 1000ms;
   animation-iteration-count: infinite;
 
 }
+
+.cursorBackground{
+  background-color: green;
+  /* width:100px; */
+  /* height: 100px;; */
+  position: absolute;
+  transition: left 250ms ease-out, top 150ms ease-in-out;
+
+}
+
 .alreadyTypedText{
   color:blue;
 }
