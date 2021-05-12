@@ -23,6 +23,16 @@ export class SettingsComponent extends Component {
             this.props.handleSettingsChange(this.state.settings);
             localStorage.setItem("settings", JSON.stringify(this.state.settings));
         }
+        console.log("old", oldProps, "new", this.props)
+
+        if (oldProps.defaultSettings.darkMode != this.props.defaultSettings.darkMode) {
+            this.setState({
+                settings: {
+                    ...this.state.settings,
+                    darkMode: this.props.defaultSettings.darkMode,
+                }
+            });
+        }
     }
     minWpmDropdown(event) {
         this.setState({
@@ -46,51 +56,54 @@ export class SettingsComponent extends Component {
     }
 
 
-
     render() {
-        return (
-            <div className="settingsContainer">
-                <div className="bubble">
-                    <label htmlFor="hardMode" className="hardModeLabel">Hard Mode:</label>
-                    <input type="checkbox" className="hardModeCheckbox" name="hardMode" onChange={this.handleHardMode} checked={this.state.settings.hardMode}></input>
+        if (this.props.typingPage) {
+            return (
+                <div className="settingsContainer">
+                    <div className="bubble">
+                        <label htmlFor="hardMode" className="hardModeLabel">Hard Mode:</label>
+                        <input type="checkbox" className="hardModeCheckbox" name="hardMode" onChange={this.handleHardMode} checked={this.state.settings.hardMode}></input>
+                    </div>
+                    <div className="bubble"><label htmlFor="numberOption" className="minWPMLabel">Minimum WPM </label>
+                        <select name="numberOption" value={this.state.settings.minWPM} onChange={this.minWpmDropdown} className="minWPMDropDown">
+                            <option className="mimWpmDropdownLabel" value={15} key={15}>
+                                15
+                        </option>
+
+                            <option className="mimWpmDropdownLabel" value={30} key={30}>
+                                30
+                        </option>
+
+                            <option className="mimWpmDropdownLabel" value={50} key={50}>
+                                50
+                        </option>
+
+                            <option className="mimWpmDropdownLabel" value={60} key={60}>
+                                60
+                        </option>
+
+                            <option className="mimWpmDropdownLabel" value={75} key={75}>
+                                75
+                        </option>
+                            <option className="mimWpmDropdownLabel" value={85} key={85}>
+                                85
+                        </option>
+                            <option className="mimWpmDropdownLabel" value={100} key={100}>
+                                100
+                        </option>
+                            <option className="mimWpmDropdownLabel" value={120} key={120}>
+                                120
+                        </option>
+                            <option className="mimWpmDropdownLabel" value={150} key={150}>
+                                150
+                        </option>
+                        </select>
+                    </div>
                 </div>
-                <div className="bubble"><label htmlFor="numberOption" className="minWPMLabel">Minimum WPM </label>
-                    <select name="numberOption" value={this.state.settings.minWPM} onChange={this.minWpmDropdown} className="minWPMDropDown">
-                        <option className="mimWpmDropdownLabel" value={15} key={15}>
-                            15
-                        </option>
+            );
+        }
 
-                        <option className="mimWpmDropdownLabel" value={30} key={30}>
-                            30
-                        </option>
-
-                        <option className="mimWpmDropdownLabel" value={50} key={50}>
-                            50
-                        </option>
-
-                        <option className="mimWpmDropdownLabel" value={60} key={60}>
-                            60
-                        </option>
-
-                        <option className="mimWpmDropdownLabel" value={75} key={75}>
-                            75
-                        </option>
-                        <option className="mimWpmDropdownLabel" value={85} key={85}>
-                            85
-                        </option>
-                        <option className="mimWpmDropdownLabel" value={100} key={100}>
-                            100
-                        </option>
-                        <option className="mimWpmDropdownLabel" value={120} key={120}>
-                            120
-                        </option>
-                        <option className="mimWpmDropdownLabel" value={150} key={150}>
-                            150
-                        </option>
-                    </select>
-                </div>
-            </div>
-        );
+        return (<></>); // do not want settings display on none typing pages
     }
 }
 

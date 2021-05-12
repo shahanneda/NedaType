@@ -13,9 +13,10 @@ class App extends React.Component {
             settings: {
                 hardMode: false,
                 minWPM: 15,
+                darkMode: true,
             },
-            darkMode: true,
         };
+
         this.handleOptionChange = this.handleOptionChange.bind(this);
         this.handleSettingsChange = this.handleSettingsChange.bind(this);
         this.handleDarkMode = this.handleDarkMode.bind(this);
@@ -35,7 +36,7 @@ class App extends React.Component {
                     <Route path="/type/:text" render={((routeProps) =>
                         <div>
 
-                            <HeaderComponent typingPage={true} defaultSettings={this.state.settings} handleSettingsChange={this.handleSettingsChange} darkMode={this.state.darkMode} handleDarkMode={this.handleDarkMode}/>
+                            <HeaderComponent typingPage={true} defaultSettings={this.state.settings} handleSettingsChange={this.handleSettingsChange}  handleDarkMode={this.handleDarkMode}/>
                             <TypingPage differentTexts={this.props.differentTexts} nameOfLevel={routeProps.match.params.text} routeProps={routeProps} settings={this.state.settings} />
 
                         </div>
@@ -45,7 +46,7 @@ class App extends React.Component {
                     <Route path={["/browse", "/"]} render={(routeProps) => (
                         <div>
 
-                            <HeaderComponent typingPage={false} darkMode={this.state.darkMode} handleDarkMode={this.handleDarkMode}/>
+                            <HeaderComponent typingPage={false} defaultSettings={this.state.settings} handleSettingsChange={this.handleSettingsChange} handleDarkMode={this.handleDarkMode}/>
                             <LevelPicker routeProps={routeProps} options={this.props.differentTexts} onChange={this.handleOptionChange} />
                         </div>
                     )}>
@@ -68,12 +69,20 @@ class App extends React.Component {
 
     handleSettingsChange(newSettings) {
         this.setState({ settings: newSettings });
+        console.log("in app", newSettings)
+        this.handleDarkMode(newSettings.darkMode)
     }
 
-    handleDarkMode(darkModeValue){
-        this.setState({darkMode: darkModeValue})
-        document.documentElement.setAttribute('data-theme', darkModeValue ? "dark" : "light");
 
+    handleDarkMode(darkModeValue){
+        this.setState({
+            settings: {
+                ...this.state.settings,
+                darkMode: darkModeValue,
+            }
+        })
+
+        document.documentElement.setAttribute('data-theme', darkModeValue ? "dark" : "light");
     }
 }
 export default App;

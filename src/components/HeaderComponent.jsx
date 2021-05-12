@@ -7,9 +7,6 @@ export class HeaderComponent extends Component {
 
     constructor(props) {
         super(props);
-        // this.state = {
-        //     settings: this.props.defaultSettings,
-        // }
     }
     render() {
         let isOnBrowsePage = this.props.location.pathname == '/browse' || this.props.location.pathname == '/';
@@ -17,15 +14,13 @@ export class HeaderComponent extends Component {
         return (
 
             <div className="headerWrapper">
-                {this.props.typingPage ?
-                    <SettingsComponent defaultSettings={this.props.defaultSettings} handleSettingsChange={this.props.handleSettingsChange} /> : ""
-                }
+                <SettingsComponent  typingPage={this.props.typingPage} defaultSettings={this.props.defaultSettings} handleSettingsChange={this.props.handleSettingsChange} /> 
                 <div className="siteTitle">NEDATYPE</div>
                 {!isOnBrowsePage ? <Link to="/browse" className="headerRight bubble">&larr; Back</Link> : ""}
 
 
 
-                {this.props.darkMode ? <div onClick={() => {this.props.handleDarkMode(false)}} className="darkModeButton bubble headerRight"> 🌚</div>
+                {this.props.defaultSettings.darkMode ? <div onClick={() => {this.props.handleDarkMode(false)}} className="darkModeButton bubble headerRight"> 🌚</div>
                 : <div  className="darkModeButton bubble headerRight"  onClick={() => {this.props.handleDarkMode(true)}} > 🌞</div>}
             </div>
         );
