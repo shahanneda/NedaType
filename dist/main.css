@@ -33,26 +33,36 @@
 }
 */
 
-@keyframes smoothCursorAnimation {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-100%); }
+@keyframes cursorBlinkAnimation {
+  0% {
+    background-color: rgba(185, 185, 185, 0.6);
+  }
+  50% {
+
+    background-color: rgba(185, 185, 185, 1);
+  }
+  100% {
+
+    background-color: rgba(185, 185, 185, 0.6);
+  }
 }
 
 .currentLetter{
   background-color: clear;
   /* word-spacing: 50px; */
   /* animation-name: colorfulCursorAnimation; */
-  animation-duration: 1000ms;
-  animation-iteration-count: infinite;
 
 }
 
 .cursorBackground{
-  background-color: rgba(108, 108, 108, 0.995);
+  background-color: rgba(185, 185, 185, 0.6);
   /* width:100px; */
   /* height: 100px;; */
   position: absolute;
-  transition: left 250ms ease-out, top 150ms ease-in-out;
+  transition: left 83ms ease-in, top 150ms ease-in-out;
+  animation-name: cursorBlinkAnimation;
+  animation-duration: 1060ms;
+  animation-iteration-count: infinite;
 
 }
 

@@ -72,7 +72,7 @@ class TypeComponent extends React.Component {
         let wordArray = this.getWordCurrentlyTyping().split(" ");
         let wordJustCompleted = wordArray[1];
         let nextWord = wordArray[2];
-        console.log(wordJustCompleted);
+        // console.log(wordJustCompleted);
 
         let timeCurrentWordTook = Date.now() - this.state.timeCurrentWordStarted;
         let mathNumberOfWordsType = wordJustCompleted.length / 5; // assuimg wpm at 5 letter word
@@ -218,15 +218,17 @@ class TypeComponent extends React.Component {
   }
 
   updateBackgroundCursor(){
-    // this.cursorBackgroundRef.current.style.backgroundColor = "#" + ((1<<24)*Math.random() | 0).toString(16);
-    let bounding = this.cursorBackgroundMarkerRef.current.getBoundingClientRect()
-    console.log(bounding.left + "px");
+    // moves the cursor background to the current letter
+
+    // this.cursorBackgroundRef.current.style.backgroundColor = "#" + ((1<<24)*Math.random() | 0).toString(16); // random color expriement
+
+    let bounding = this.cursorBackgroundMarkerRef.current.getBoundingClientRect() // get position of current letter
     this.cursorBackgroundRef.current.style.left = bounding.left + "px";
-    this.cursorBackgroundRef.current.style.top = (bounding.top+7) + "px";
-    console.log(this.cursorBackgroundMarkerRef.current)
+    this.cursorBackgroundRef.current.style.top = (bounding.top+7) + "px"; // plus 7 to align the cursor with letter 
   }
 
   _handleKeyDown(event) {
+    console.log(event)
 
     if (event.keyCode == 8) {
       event.preventDefault();
@@ -240,7 +242,7 @@ class TypeComponent extends React.Component {
     }
 
     let keycode = event.keyCode;
-    console.log("Keycode of key pressed" + keycode);
+    // console.log("Keycode of key pressed" + keycode);
     var valid = // all this is to now have non typblee keys life shift shsow up
       (keycode > 47 && keycode < 58) || // number keys
       keycode == 32 ||// keycode == 13 || // spacebar & return key(s) 
