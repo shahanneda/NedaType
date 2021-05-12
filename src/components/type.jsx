@@ -1,5 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import WPMCounter from "./WPMCounter"
+
 class TypeComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -17,6 +19,11 @@ class TypeComponent extends React.Component {
       redirectSet: false,
 
     };
+
+    this.cursorBackgroundRef = React.createRef();
+    this.cursorBackgroundMarkerRef = React.createRef();
+
+    this.updateBackgroundCursor = this.updateBackgroundCursor.bind(this);
     this._handleKeyDown = this._handleKeyDown.bind(this);
     this.handleKeyTyped = this.handleKeyTyped.bind(this);
     this.moveCurrentLetterToNextLetter = this.moveCurrentLetterToNextLetter.bind(this);
@@ -26,6 +33,10 @@ class TypeComponent extends React.Component {
   }
   componentDidMount() {
     document.addEventListener("keydown", this._handleKeyDown);
+    
+
+    //to initially set correct cursor background position
+    this.updateBackgroundCursor();
   }
   componentWillUnmount() {
     document.removeEventListener("keydown", this._handleKeyDown);
@@ -48,6 +59,7 @@ class TypeComponent extends React.Component {
     }
   }
   handleKeyTyped(key) {
+    
     if (this.state.timeOfStart == -999) {
       this.setState({
         timeOfStart: Date.now(),
@@ -64,7 +76,7 @@ class TypeComponent extends React.Component {
         let wordArray = this.getWordCurrentlyTyping().split(" ");
         let wordJustCompleted = wordArray[1];
         let nextWord = wordArray[2];
-        console.log(wordJustCompleted);
+        // console.log(wordJustCompleted);
 
         let timeCurrentWordTook = Date.now() - this.state.timeCurrentWordStarted;
         let mathNumberOfWordsType = wordJustCompleted.length / 5; // assuimg wpm at 5 letter word
@@ -175,6 +187,7 @@ class TypeComponent extends React.Component {
     var arrayOfMistakes = this.state.arrayOfMistakes;
 
 
+    // we dont want backspace if there is nothing to go back(start)
     if(alreadyTypedText.length == 0){
       return;
     }
@@ -206,14 +219,25 @@ class TypeComponent extends React.Component {
       charTypedSinceStart: this.state.charTypedSinceStart + 1,
     });
     return nextLetter;
-
-
-
   }
+
+  updateBackgroundCursor(){
+    // moves the cursor background to the current letter
+
+    // this.cursorBackgroundRef.current.style.backgroundColor = "#" + ((1<<24)*Math.random() | 0).toString(16); // random color expriement
+
+    let bounding = this.cursorBackgroundMarkerRef.current.getBoundingClientRect() // get position of current letter
+    this.cursorBackgroundRef.current.style.left = bounding.left + "px";
+    this.cursorBackgroundRef.current.style.top = (bounding.top+7) + "px"; // plus 7 to align the cursor with letter 
+  }
+
   _handleKeyDown(event) {
+    console.log(event)
+
     if (event.keyCode == 8) {
       event.preventDefault();
       this.handleBackSpace();
+      this.updateBackgroundCursor()
       return;
     }
     if (event.key == "b" && (event.ctrlKey || event.metaKey)) {// possibly move this to a separet compoennt
@@ -222,7 +246,7 @@ class TypeComponent extends React.Component {
     }
 
     let keycode = event.keyCode;
-    console.log("Keycode of key pressed" + keycode);
+    // console.log("Keycode of key pressed" + keycode);
     var valid = // all this is to now have non typblee keys life shift shsow up
       (keycode > 47 && keycode < 58) || // number keys
       keycode == 32 ||// keycode == 13 || // spacebar & return key(s) 
@@ -245,6 +269,7 @@ class TypeComponent extends React.Component {
           //   // characterTyped = characterTyped.toLowerCase();
           // }
           this.handleKeyTyped(characterTyped);
+          this.updateBackgroundCursor()
           break;
       }
     }
@@ -278,16 +303,18 @@ class TypeComponent extends React.Component {
     return <div>
       {this.state.redirectSet ? <Redirect to="/browse" /> : ""}
 
-      <WpmCounter startTime={this.state.timeOfStart} charactersTyped={this.state.charTypedSinceStart} />
+      <WPMCounter startTime={this.state.timeOfStart} charactersTyped={this.state.charTypedSinceStart} />
+     
+      <span ref={this.cursorBackgroundRef} className={"cursorBackground"}>&nbsp;</span>
+
       <div className="outerContainerText">
         <div className="text">
           <span className="alreadyTypedText">
             {formattedTypedText}
           </span>
-          <span className="currentLetter">
-            <span className={extraCssName}>
+          {/* <span ref={this.cursorBackgroundMarkerRef} className={"cursorBackgroundMarker"}></span> */}
+          <span ref={this.cursorBackgroundMarkerRef} className={"currentLetter " +extraCssName} key={Date.now()} >
               {this.state.currentLetter == " " ? "_" : this.state.currentLetter}
-            </span>
           </span>
           {this.state.screenText}
         </div>
@@ -296,43 +323,4 @@ class TypeComponent extends React.Component {
   }
 }
 
-class WpmCounter extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      secondSinceStart: (Date.now() - this.props.startTime) / 1000,
-      charsTyped: this.props.charactersTyped,
-      wpm: 0
-    };
-  }
-  componentDidUpdate(oldProps) {
-
-
-    if (oldProps.charactersTyped != this.state.charsTyped) {
-
-      // 
-
-      this.setState({
-        secondSinceStart: (Date.now() - this.props.startTime) / 1000,
-        charsTyped: this.props.charactersTyped,
-      });
-      var wordsTyped = this.props.charactersTyped / 5;
-      var minPast = this.state.secondSinceStart / 60;
-      this.setState({
-        wpm: wordsTyped / minPast,
-      });
-      if (this.props.startTime == -999) {
-        this.setState({ wpm: 0 });
-      }
-    }
-  }
-  render() {
-
-    return (
-      <div className="wpmCounterContainer">
-        <span className="wpmCounterText"> {Math.floor(this.state.wpm)} WPM</span>
-      </div>
-    );
-  }
-}
 export default TypeComponent;

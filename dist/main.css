@@ -15,11 +15,58 @@
 .outerTextContainer{
   width: 100%;
 }
+@keyframes colorfulCursorAnimation {
+  0%   {background-color: red;}
+  25%  {background-color: yellow;}
+  50%  {background-color: blue;}
+  100% {background-color: green;}
+   /*0%  {background-color: cyan;} 
+  50%  {background-color: rgba(39, 39, 235, 0.235);}
+  100% {background-color: lightblue;}  */
+}
+
+/* TODO: Add this as an option
+.colorfulCurserAnimation{
+  animation-name: colorfulCursorAnimation;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+*/
+
+@keyframes cursorBlinkAnimation {
+  0% {
+    background-color: rgba(185, 185, 185, 0.6);
+  }
+  50% {
+
+    background-color: rgba(185, 185, 185, 1);
+  }
+  100% {
+
+    background-color: rgba(185, 185, 185, 0.6);
+  }
+}
+
 .currentLetter{
-  background-color: lightgrey;
+  background-color: clear;
   /* word-spacing: 50px; */
+  /* animation-name: colorfulCursorAnimation; */
 
 }
+
+.cursorBackground{
+  background-color: rgba(185, 185, 185, 0.6);
+  /* width:100px; */
+  /* height: 100px;; */
+  position: absolute;
+  transition: left 83ms ease-in-out, top 150ms ease-in-out;
+  animation-name: cursorBlinkAnimation;
+  animation-duration: 1060ms;
+  animation-iteration-count: infinite;
+  padding-top: 1px;
+
+}
+
 .alreadyTypedText{
   color:blue;
 }
