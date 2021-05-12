@@ -33,13 +33,14 @@ class TypeComponent extends React.Component {
   }
   componentDidMount() {
     document.addEventListener("keydown", this._handleKeyDown);
-    
+    window.addEventListener('resize', this.updateBackgroundCursor);
 
     //to initially set correct cursor background position
     this.updateBackgroundCursor();
   }
   componentWillUnmount() {
     document.removeEventListener("keydown", this._handleKeyDown);
+    window.removeEventListener('resize', this.updateBackgroundCursor);
   }
   componentDidUpdate(prevProps) {
     if (prevProps.text !== this.props.text) {
