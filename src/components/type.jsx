@@ -42,6 +42,7 @@ class TypeComponent extends React.Component {
     document.removeEventListener("keydown", this._handleKeyDown);
     window.removeEventListener('resize', this.updateBackgroundCursor);
   }
+
   componentDidUpdate(prevProps) {
     if (prevProps.text !== this.props.text) {
       this.setState({

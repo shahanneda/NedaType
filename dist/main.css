@@ -1,8 +1,26 @@
 
+:root {
+  /* --page-background:white;
+  --header-background: #00c0ff;
+  --bubble-background: #beffeb63;
+  --text-color: black;
+  --typed-text-color: blue;
+  --wpm-background: #00c0fee3;
+  --level-box-background:cornflowerblue; */
+
+  --page-background:rgb(36, 36, 36);
+  --header-background: #000000;
+  --bubble-background: #24242463;
+  --text-color: rgb(131, 131, 131);
+  --typed-text-color: rgb(255, 255, 255);
+  --wpm-background: #0d0d0ee3;
+  --level-box-background:rgb(134, 134, 134);
+}
+
 .text {
   font-size: 100px;
   display: inline;
-  background: #fff;
+  background: clear;
   padding: 5px;
   margin: 18px;
   font-size: 2em;
@@ -10,6 +28,7 @@
   font-family: monospace;
   white-space: pre-wrap;
   text-align: justify;
+  color: var(--text-color);
 
 }
 .outerTextContainer{
@@ -68,7 +87,7 @@
 }
 
 .alreadyTypedText{
-  color:blue;
+  color:var(--typed-text-color);
 }
 .whitespaceCurrentLetter{
   opacity: 0.2;
@@ -111,7 +130,7 @@ span.wpmCounterOnText {
   padding: 0.3em;
   padding-bottom: 3em;
   padding-top: 3em;
-  background-color: cornflowerblue;
+  background-color: var(--level-box-background);
   color: white;
   text-decoration: none;
 
@@ -130,7 +149,7 @@ a{
 }
 
 .headerWrapper{
-  background-color: #00c0ff;
+  background-color: var(--header-background);
   position: relative;
   top: 0px;
   width: 100vw;
@@ -156,6 +175,7 @@ a{
 }
 html{
   margin: 0px;
+  background-color: var(--page-background);
   
 }
 body{
@@ -165,23 +185,13 @@ body{
 }
 .backButton{
   float: right;
-  padding: 10px;
-  top: 5vh;
-  position: relative;
-  margin: 0px 5vh 0px 0px;
-  text-decoration: none;
-  color: white;
-  background-color: #7efff32e;
-  font-family: sans-serif;
-  /* float: left;
-  width: 33.33%; */
 }
 
 .redWPM{
   color:red !important;
 }
 .wpmCounterContainer{
-  background: #00c0fee3;
+  background: var(--wpm-background);
   text-align: center;
   color: white;
   padding: 10px;
@@ -198,22 +208,13 @@ body{
   margin-right: auto;
   float: left;
   width: 33.33%;
-  
 }
-.hardModeContainer{
-  margin: 1em;
+.bubble{
+  margin: 0.5em;
   color: white;
-  background: #beffeb63;
+  background: var(--bubble-background);
   padding: 20px;
-  /* width: 2em; */
-  display: inline-block;
-}
-.minWPMContainer{
-  margin: 1em;
-  color: white;
-  background: #beffeb63;
-  padding: 20px;
-  /* width: 2em; */
+  border-radius: 30px;
   display: inline-block;
 }
 .hardModeLabel{

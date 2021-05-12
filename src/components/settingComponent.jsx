@@ -49,11 +49,11 @@ export class SettingsComponent extends Component {
     render() {
         return (
             <div className="settingsContainer">
-                <div className="hardModeContainer">
+                <div className="bubble">
                     <label htmlFor="hardMode" className="hardModeLabel">Hard Mode:</label>
                     <input type="checkbox" className="hardModeCheckbox" name="hardMode" onChange={this.handleHardMode} checked={this.state.settings.hardMode}></input>
                 </div>
-                <div className="minWPMContainer"><label htmlFor="numberOption" className="minWPMLabel">Minimum WPM </label>
+                <div className="bubble"><label htmlFor="numberOption" className="minWPMLabel">Minimum WPM </label>
                     <select name="numberOption" value={this.state.settings.minWPM} onChange={this.minWpmDropdown} className="minWPMDropDown">
                         <option className="mimWpmDropdownLabel" value={15} key={15}>
                             15

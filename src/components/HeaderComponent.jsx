@@ -21,7 +21,7 @@ export class HeaderComponent extends Component {
                     <SettingsComponent defaultSettings={this.props.defaultSettings} handleSettingsChange={this.props.handleSettingsChange} /> : ""
                 }
                 <div className="siteTitle">NEDATYPE</div>
-                {!isOnBrowsePage ? <Link to="/browse" className="backButton">&larr; Back</Link> : ""}
+                {!isOnBrowsePage ? <Link to="/browse" className="backButton bubble">&larr; Back</Link> : ""}
 
             </div>
         );
