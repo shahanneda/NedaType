@@ -59,10 +59,11 @@
   /* width:100px; */
   /* height: 100px;; */
   position: absolute;
-  transition: left 83ms ease-in, top 150ms ease-in-out;
+  transition: left 83ms ease-in-out, top 150ms ease-in-out;
   animation-name: cursorBlinkAnimation;
   animation-duration: 1060ms;
   animation-iteration-count: infinite;
+  padding-top: 1px;
 
 }
 
