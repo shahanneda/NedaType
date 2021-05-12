@@ -131,7 +131,7 @@ a{
 
 .headerWrapper{
   background-color: #00c0ff;
-  position: fixed;
+  position: relative;
   top: 0px;
   width: 100vw;
   height: 10vh;
@@ -161,7 +161,7 @@ html{
 body{
   /* padding: 0px; */
   margin: 0px;
-  margin-top: 10vh;;
+  /* margin-top: 10vh;; */
 }
 .backButton{
   float: right;
@@ -185,7 +185,7 @@ body{
   text-align: center;
   color: white;
   padding: 10px;
-  margin-top:6%;
+  /* margin-top:6%; */
 }
 
 .wpmCounterText{
