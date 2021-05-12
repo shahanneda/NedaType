@@ -46,6 +46,7 @@ export class SettingsComponent extends Component {
     }
 
 
+
     render() {
         return (
             <div className="settingsContainer">

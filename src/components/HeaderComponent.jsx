@@ -21,8 +21,12 @@ export class HeaderComponent extends Component {
                     <SettingsComponent defaultSettings={this.props.defaultSettings} handleSettingsChange={this.props.handleSettingsChange} /> : ""
                 }
                 <div className="siteTitle">NEDATYPE</div>
-                {!isOnBrowsePage ? <Link to="/browse" className="backButton bubble">&larr; Back</Link> : ""}
+                {!isOnBrowsePage ? <Link to="/browse" className="headerRight bubble">&larr; Back</Link> : ""}
 
+
+
+                {this.props.darkMode ? <div onClick={() => {this.props.handleDarkMode(false)}} className="darkModeButton bubble headerRight"> 🌚</div>
+                : <div  className="darkModeButton bubble headerRight"  onClick={() => {this.props.handleDarkMode(true)}} > 🌞</div>}
             </div>
         );
     }

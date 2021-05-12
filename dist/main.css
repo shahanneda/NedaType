@@ -1,12 +1,5 @@
 
 :root {
-  /* --page-background:white;
-  --header-background: #00c0ff;
-  --bubble-background: #beffeb63;
-  --text-color: black;
-  --typed-text-color: blue;
-  --wpm-background: #00c0fee3;
-  --level-box-background:cornflowerblue; */
 
   --page-background:rgb(36, 36, 36);
   --header-background: #000000;
@@ -15,6 +8,16 @@
   --typed-text-color: rgb(255, 255, 255);
   --wpm-background: #0d0d0ee3;
   --level-box-background:rgb(134, 134, 134);
+}
+[data-theme="light"] {
+
+  --page-background:white;
+  --header-background: #00c0ff;
+  --bubble-background: #beffeb63;
+  --text-color: black;
+  --typed-text-color: blue;
+  --wpm-background: #00c0fee3;
+  --level-box-background:cornflowerblue; 
 }
 
 .text {
@@ -183,7 +186,7 @@ body{
   margin: 0px;
   /* margin-top: 10vh;; */
 }
-.backButton{
+.headerRight{
   float: right;
 }
 
@@ -237,4 +240,15 @@ body{
 
 .outerContainerText {
   margin: 10px;
+}
+
+
+.darkModeButton{
+  font-size: 29.6px;
+  padding: 8px;
+}
+
+.darkModeButton:hover{
+  cursor:pointer;
+  transition: backgroundColor 1000ms linear;
 }
