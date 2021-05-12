@@ -181,18 +181,25 @@ class TypeComponent extends React.Component {
 
   handleBackSpace(key) {
 
-    var currentLetter = this.state.currentLetter;//current thin we are typing
+    var currentLetter = this.state.currentLetter;//current text we are typing
     var screenText = this.state.screenText;// what we need to type
     var alreadyTypedText = this.state.alreadyTypedText; //already typed
     var arrayOfMistakes = this.state.arrayOfMistakes;
+    var arrayOfWordWPMs = this.state.arrayOfWordWPMs;
 
+
+    let charWeAreDeleting = alreadyTypedText.charAt(alreadyTypedText.length - 1);
+
+    console.log(charWeAreDeleting)
 
     // we dont want backspace if there is nothing to go back(start)
     if(alreadyTypedText.length == 0){
       return;
     }
 
+
     if (arrayOfMistakes.includes(alreadyTypedText.length - 1)) {
+      // if its a mistake were deleting, just delete it from the array of mistakes
       alreadyTypedText = alreadyTypedText.substr(0, alreadyTypedText.length - 1);
       arrayOfMistakes.pop();
       this.setState({
@@ -202,10 +209,23 @@ class TypeComponent extends React.Component {
         arrayOfMistakes: arrayOfMistakes,
       });
     } else {
+      // not a mistake so remove actual proper typed text, and add it back to the screenText (what we need to type in future)
+
+
+
+      // if we delete an entire word, then we should clear that word from the wpm word list
+      let charTwoBefore = alreadyTypedText.charAt(alreadyTypedText.length -2);
+        console.log(charTwoBefore)
+      if(charTwoBefore == " " || charTwoBefore == undefined  ){
+        arrayOfWordWPMs.pop();
+      }
+
+      
       this.setState({
         screenText: currentLetter + screenText,
-        currentLetter: alreadyTypedText.charAt(alreadyTypedText.length - 1),
-        alreadyTypedText: alreadyTypedText.substr(0, alreadyTypedText.length - 1)
+        currentLetter: charWeAreDeleting,
+        alreadyTypedText: alreadyTypedText.substr(0, alreadyTypedText.length - 1),
+        arrayOfWordWPMs: arrayOfWordWPMs,
       });
     }
 
@@ -232,7 +252,6 @@ class TypeComponent extends React.Component {
   }
 
   _handleKeyDown(event) {
-    console.log(event)
 
     if (event.keyCode == 8) {
       event.preventDefault();
@@ -289,7 +308,6 @@ class TypeComponent extends React.Component {
       } else if (typedText.charAt(i) == " ") { // checks if the current word has ended to add wpm counter, also checks to make sure current word was not less than 3 by using the -999 marker
         if (this.state.arrayOfWordWPMs[wordCounter] != 999) {
           var classNames = "wpmCounterOnText " + ((this.state.arrayOfWordWPMs[wordCounter] < this.props.settings.minWPM) ? " redWPM" : "")
-          console.log(classNames);
 
           formattedTypedText.push(<span key={wordCounter} className={classNames}>{this.state.arrayOfWordWPMs[wordCounter]} WPM</span>);
         }
