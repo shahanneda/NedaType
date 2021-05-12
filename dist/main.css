@@ -13,7 +13,7 @@
 
   --page-background:white;
   --header-background: #00c0ff;
-  --bubble-background: #beffeb63;
+  --bubble-background: #4bd8f7;
   --text-color: black;
   --typed-text-color: blue;
   --wpm-background: #00c0fee3;
@@ -251,4 +251,11 @@ body{
 .darkModeButton:hover{
   cursor:pointer;
   transition: backgroundColor 1000ms linear;
+}
+
+select.minWPMDropDown {
+  background-color: var(--bubble-background);
+  border: none;
+  font-size: 16px;
+  color: white;
 }
