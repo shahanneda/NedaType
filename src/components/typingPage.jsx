@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import SettingsComponent from "./settingComponent.jsx"
-import TypeComponent from './type.jsx';
+import SettingsComponent from "./SettingComponent.jsx"
+import TypeComponent from './Type.jsx';
 import { Link, Redirect } from "react-router-dom"
 export class TypingPage extends Component {
     constructor(props) {

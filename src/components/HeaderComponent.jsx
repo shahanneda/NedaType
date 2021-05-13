@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import SettingsComponent from './settingComponent.jsx';
+import SettingsComponent from './SettingComponent.jsx';
 
 
 export class HeaderComponent extends Component {
