@@ -56,7 +56,6 @@ class TypeComponent extends React.Component {
         curentWordGettingRepeated: "",
         timeCurrentWordStarted: null,
         arrayOfWordWPMs: [],
-
       });
     }
   }
@@ -213,12 +212,8 @@ class TypeComponent extends React.Component {
     } else {
       // not a mistake so remove actual proper typed text, and add it back to the screenText (what we need to type in future)
 
-
-
-      // if we delete an entire word, then we should clear that word from the wpm word list
-      let charTwoBefore = alreadyTypedText.charAt(alreadyTypedText.length -2);
-        console.log(charTwoBefore)
-      if(charTwoBefore == " " || charTwoBefore == undefined  ){
+      // if we are going back a word the next letter to type (currentLetter) == " ", so we should remove the wpm
+      if(currentLetter==" "){
         arrayOfWordWPMs.pop();
       }
 
@@ -246,7 +241,7 @@ class TypeComponent extends React.Component {
   updateBackgroundCursor(){
     // moves the cursor background to the current letter
 
-    // this.cursorBackgroundRef.current.style.backgroundColor = "#" + ((1<<24)*Math.random() | 0).toString(16); // random color expriement
+    //  this.cursorBackgroundRef.current.style.backgroundColor = "#" + ((1<<24)*Math.random() | 0).toString(16); // random color expriement
 
     let bounding = this.cursorBackgroundMarkerRef.current.getBoundingClientRect() // get position of current letter
     this.cursorBackgroundRef.current.style.left = bounding.left + "px";
