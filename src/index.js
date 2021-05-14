@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TypeComponent from "./components/type.jsx"
+import TypeComponent from "./components/Type.jsx"
 import App from "./components/app.js";
 const title = 'NedaType';
 

@@ -1,9 +1,9 @@
 import React from 'React'
 import LevelPicker from "./LevelPicker.jsx";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
-import TypingPage from './typingPage.jsx';
+import TypingPage from './TypingPage.jsx';
 import HeaderComponent from './HeaderComponent'
-import SettingsComponent from './settingComponent.jsx'
+import SettingsComponent from './SettingComponent.jsx'
 class App extends React.Component {
 
     constructor(props) {
@@ -69,8 +69,10 @@ class App extends React.Component {
 
     handleSettingsChange(newSettings) {
         this.setState({ settings: newSettings });
-        console.log("in app", newSettings)
-        this.handleDarkMode(newSettings.darkMode)
+        // console.log("in app", newSettings)
+        if(this.state.settings.darkMode != newSettings.darkMode){
+            this.handleDarkMode(newSettings.darkMode)
+        }
     }
 
 

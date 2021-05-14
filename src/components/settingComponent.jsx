@@ -45,14 +45,17 @@ export class SettingsComponent extends Component {
     }
     handleHardMode(event) {
         console.log(this.state.hardMode);
+        let newSettings = {
+            ...this.state.settings,
+            hardMode: !this.state.settings.hardMode,
+        };
+
         this.setState({
-            settings: {
-                ...this.state.settings,
-                hardMode: !this.state.settings.hardMode,
-            }
+            settings: newSettings
         });
+
         event.target.blur();
-        this.props.handleSettingsChange(this.state.settings);
+        this.props.handleSettingsChange(newSettings);
     }
 
 
