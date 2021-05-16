@@ -33,8 +33,8 @@ class WpmCounter extends React.Component {
   render() {
 
     return (
-      <div className="wpmCounterContainer">
-        <span className="wpmCounterText"> {Math.floor(this.state.wpm)} WPM</span>
+      <div className="wpm-counter-container">
+        <span className="wpm-counter-text"> {Math.floor(this.state.wpm)} WPM</span>
       </div>
     );
   }

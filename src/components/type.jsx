@@ -293,7 +293,7 @@ class TypeComponent extends React.Component {
 
 
   render() {
-    var extraCssName = this.state.currentLetter == " " ? "whitespaceCurrentLetter" : "";
+    var extraCssName = this.state.currentLetter == " " ? "whitespace-current-letter" : "";
     var typedText = this.state.alreadyTypedText;
     var formattedTypedText = [];
     var arrayMistake = this.state.arrayOfMistakes;
@@ -301,10 +301,10 @@ class TypeComponent extends React.Component {
     var wordCounter = 0;
     for (var i = 0; i < typedText.length; i++) {//loops through everysingle character to check if there is a mistake, if there is it adds an error span around it
       if (arrayMistake.includes(i)) {
-        formattedTypedText.push(<span key={typedText.charAt(i) + i} className={typedText.charAt(i) == " " ? "error spaceError" : "error"}>{typedText.charAt(i)}</span>);
+        formattedTypedText.push(<span key={typedText.charAt(i) + i} className={typedText.charAt(i) == " " ? "error space-error" : "error"}>{typedText.charAt(i)}</span>);
       } else if (typedText.charAt(i) == " ") { // checks if the current word has ended to add wpm counter, also checks to make sure current word was not less than 3 by using the -999 marker
         if (this.state.arrayOfWordWPMs[wordCounter] != 999) {
-          var classNames = "wpmCounterOnText " + ((this.state.arrayOfWordWPMs[wordCounter] < this.props.settings.minWPM) ? " redWPM" : "")
+          var classNames = "wpm-counter-on-text " + ((this.state.arrayOfWordWPMs[wordCounter] < this.props.settings.minWPM) ? " red-WPM" : "")
 
           formattedTypedText.push(<span key={wordCounter} className={classNames}>{this.state.arrayOfWordWPMs[wordCounter]} WPM</span>);
         }
@@ -320,15 +320,15 @@ class TypeComponent extends React.Component {
 
       <WPMCounter startTime={this.state.timeOfStart} charactersTyped={this.state.charTypedSinceStart} />
      
-      <span ref={this.cursorBackgroundRef} className={"cursorBackground"}>&nbsp;</span>
+      <span ref={this.cursorBackgroundRef} className={"cursor-background"}>&nbsp;</span>
 
-      <div className="outerContainerText">
+      <div className="outer-container-text">
         <div className="text">
-          <span className="alreadyTypedText">
+          <span className="already-typed-text">
             {formattedTypedText}
           </span>
           {/* <span ref={this.cursorBackgroundMarkerRef} className={"cursorBackgroundMarker"}></span> */}
-          <span ref={this.cursorBackgroundMarkerRef} className={"currentLetter " +extraCssName} key={Date.now()} >
+          <span ref={this.cursorBackgroundMarkerRef} className={"current-letter " +extraCssName} key={Date.now()} >
               {this.state.currentLetter == " " ? "_" : this.state.currentLetter}
           </span>
           {this.state.screenText}

@@ -62,44 +62,21 @@ export class SettingsComponent extends Component {
     render() {
         if (this.props.typingPage) {
             return (
-                <div className="settingsContainer">
+                <div className="settings-container">
                     <div className="bubble">
-                        <label htmlFor="hardMode" className="hardModeLabel">Hard Mode:</label>
-                        <input type="checkbox" className="hardModeCheckbox" name="hardMode" onChange={this.handleHardMode} checked={this.state.settings.hardMode}></input>
+                        <label htmlFor="hard-mode" className="hard-modeLabel">Hard Mode:</label>
+                        <input type="checkbox" className="hard-mode-checkbox" name="hard-mode" onChange={this.handleHardMode} checked={this.state.settings.hardMode}></input>
                     </div>
-                    <div className="bubble"><label htmlFor="numberOption" className="minWPMLabel">Minimum WPM:</label>
-                        <select name="numberOption" value={this.state.settings.minWPM} onChange={this.minWpmDropdown} className="minWPMDropDown">
-                            <option className="mimWpmDropdownLabel" value={15} key={15}>
-                                15
-                        </option>
-
-                            <option className="mimWpmDropdownLabel" value={30} key={30}>
-                                30
-                        </option>
-
-                            <option className="mimWpmDropdownLabel" value={50} key={50}>
-                                50
-                        </option>
-
-                            <option className="mimWpmDropdownLabel" value={60} key={60}>
-                                60
-                        </option>
-
-                            <option className="mimWpmDropdownLabel" value={75} key={75}>
-                                75
-                        </option>
-                            <option className="mimWpmDropdownLabel" value={85} key={85}>
-                                85
-                        </option>
-                            <option className="mimWpmDropdownLabel" value={100} key={100}>
-                                100
-                        </option>
-                            <option className="mimWpmDropdownLabel" value={120} key={120}>
-                                120
-                        </option>
-                            <option className="mimWpmDropdownLabel" value={150} key={150}>
-                                150
-                        </option>
+                    <div className="bubble"><label htmlFor="number-option" className="min-WPM-label">Minimum WPM:</label>
+                        <select name="number-option" value={this.state.settings.minWPM} onChange={this.minWpmDropdown} className="min-WPM-dropDown">
+                            {
+                                // this just loops from 1 to 10
+                                Array.from(Array(10).keys()).map((i) => 
+                                    <option className="mim-wpm-dropdown-label" value={i * 15} key={i * 15}>
+                                        {i * 15}
+                                    </option>
+                                )
+                            }
                         </select>
                     </div>
                 </div>

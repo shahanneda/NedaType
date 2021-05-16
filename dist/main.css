@@ -34,10 +34,10 @@
   color: var(--text-color);
 
 }
-.outerTextContainer{
+.outer-text-container{
   width: 100%;
 }
-@keyframes colorfulCursorAnimation {
+@keyframes colorful-cursor-animation {
   0%   {background-color: red;}
   25%  {background-color: yellow;}
   50%  {background-color: blue;}
@@ -55,7 +55,7 @@
 }
 */
 
-@keyframes cursorBlinkAnimation {
+@keyframes cursor-blink-animation {
   0% {
     background-color: rgba(185, 185, 185, 0.6);
   }
@@ -69,36 +69,36 @@
   }
 }
 
-.currentLetter{
+.current-letter{
   background-color: clear;
   /* word-spacing: 50px; */
   /* animation-name: colorfulCursorAnimation; */
 
 }
 
-.cursorBackground{
+.cursor-background{
   background-color: rgba(185, 185, 185, 0.6);
   /* width:100px; */
   /* height: 100px;; */
   position: absolute;
   transition: left 83ms ease-in-out, top 150ms ease-in-out;
-  animation-name: cursorBlinkAnimation;
+  animation-name: cursor-blink-animation;
   animation-duration: 1060ms;
   animation-iteration-count: infinite;
   padding-top: 1px;
 
 }
 
-.alreadyTypedText{
+.already-typed-text{
   color:var(--typed-text-color);
 }
-.whitespaceCurrentLetter{
+.whitespace-current-letter{
   opacity: 0.2;
 }
 .error{
   color:red;
 }
-.spaceError{
+.space-error{
   background-color: rgba(255, 0, 0, 0.527);
   white-space: pre;
 }
@@ -112,14 +112,14 @@
   color: yellowgreen;
  
 } */
-span.wpmCounterOnText {
+span.wpm-counter-on-text {
   font-size: 8.8px;
   position: absolute;
   color: yellowgreen;
   margin-top: -19px;
   margin-left: -35.5px;
 }
-.levelsWrapper{
+.levels-wrapper{
   margin:10px 10px 10px 10px;
   color: white;
   display: grid;
@@ -127,7 +127,7 @@ span.wpmCounterOnText {
   
   
 }
-.levelWrapperBox{
+.level-wrapper-box{
   margin: 2em;
   text-align: center;
   padding: 0.3em;
@@ -141,7 +141,7 @@ span.wpmCounterOnText {
   /* height: 0px;; */
   /* width: 50%; */
 }
-.levelName{
+.level-name{
   text-align: center;
   position: relative;
   top:50%;
@@ -151,7 +151,7 @@ a{
   text-decoration: none;
 }
 
-.headerWrapper{
+.header-wrapper{
   background-color: var(--header-background);
   position: relative;
   top: 0px;
@@ -160,12 +160,12 @@ a{
   display: table;
   table-layout: fixed;
 }
-.headerWrapper:after {
+.header-wrapper:after {
   content: "";
   display: table;
   clear: both;
 }
-.siteTitle{
+.site-title{
   color: white;
   font-size: large;
   font-style: italic;
@@ -186,14 +186,14 @@ body{
   margin: 0px;
   /* margin-top: 10vh;; */
 }
-.headerRight{
+.header-right{
   float: right;
 }
 
-.redWPM{
+.red-WPM{
   color:red !important;
 }
-.wpmCounterContainer{
+.wpm-counter-container{
   background: var(--wpm-background);
   text-align: center;
   color: white;
@@ -201,11 +201,11 @@ body{
   /* margin-top:6%; */
 }
 
-.wpmCounterText{
+.wpm-counter-text{
   font-family: sans-serif;
   font-style: italic;
 }
-.settingsContainer{
+.settings-container{
   float: left;
   display: inline-block;
   margin-right: auto;
@@ -220,40 +220,24 @@ body{
   border-radius: 30px;
   display: inline-block;
 }
-.hardModeLabel{
 
-}
-.hardModeCheckbox{
 
-}
-.minWPMLabel{
-
-}
-
-.minWPMDropdown{
-
-}
-
-.minWpmDropwdownLabel{
-
-}
-
-.outerContainerText {
+.outer-container-text {
   margin: 10px;
 }
 
 
-.darkModeButton{
+.dark-mode-button{
   font-size: 29.6px;
   padding: 8px;
 }
 
-.darkModeButton:hover{
+.dark-mode-button:hover{
   cursor:pointer;
   transition: backgroundColor 1000ms linear;
 }
 
-select.minWPMDropDown {
+select.min-WPM-dropDown {
   background-color: var(--bubble-background);
   border: none;
   font-size: 16px;

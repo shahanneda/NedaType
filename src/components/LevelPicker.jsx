@@ -12,8 +12,8 @@ class LevelPicker extends React.Component {
         this.props.options.map((option) => {
             options.push(
                 <Link to={"/type/" + option.title} key={option.title}>
-                    <div className="levelWrapperBox">
-                        <div className="levelName" key={option.title}>
+                    <div className="level-wrapper-box">
+                        <div className="level-name" key={option.title}>
                             {option.title}
                         </div>
                     </div >
@@ -21,7 +21,7 @@ class LevelPicker extends React.Component {
             )
         });
         return (
-            <div className="levelsWrapper">
+            <div className="levels-wrapper">
                 {/* <select value={this.state.value} onChange={this.handleChange}> */}
                 {options}
                 {/* </select> */}

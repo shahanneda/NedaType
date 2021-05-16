@@ -13,15 +13,15 @@ export class HeaderComponent extends Component {
         console.log(isOnBrowsePage)
         return (
 
-            <div className="headerWrapper">
+            <div className="header-wrapper">
                 <SettingsComponent  typingPage={this.props.typingPage} defaultSettings={this.props.defaultSettings} handleSettingsChange={this.props.handleSettingsChange} /> 
-                <div className="siteTitle">NEDATYPE</div>
-                {!isOnBrowsePage ? <Link to="/browse" className="headerRight bubble">&larr; Back</Link> : ""}
+                <div className="site-title">NEDATYPE</div>
+                {!isOnBrowsePage ? <Link to="/browse" className="header-right bubble">&larr; Back</Link> : ""}
 
 
 
-                {this.props.defaultSettings.darkMode ? <div onClick={() => {this.props.handleDarkMode(false)}} className="darkModeButton bubble headerRight"> 🌚</div>
-                : <div  className="darkModeButton bubble headerRight"  onClick={() => {this.props.handleDarkMode(true)}} > 🌞</div>}
+                {this.props.defaultSettings.darkMode ? <div onClick={() => {this.props.handleDarkMode(false)}} className="dark-mode-button bubble header-right"> 🌚</div>
+                : <div  className="dark-mode-button bubble header-right"  onClick={() => {this.props.handleDarkMode(true)}} > 🌞</div>}
             </div>
         );
     }

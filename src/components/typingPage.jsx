@@ -27,7 +27,7 @@ export class TypingPage extends Component {
                 {/* {indexOfText == -1 ? <Redirect to="/browse"/>} */}
                 <div key={this.props.text} >
 
-                    <div className="outerTextContainer">
+                    <div className="outer-text-container">
                         <TypeComponent align="justify" settings={this.props.settings} text={this.props.differentTexts[indexOfText].text} />
                     </div>
                 </div>
