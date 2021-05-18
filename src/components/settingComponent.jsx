@@ -8,7 +8,6 @@ export class SettingsComponent extends Component {
             settings: this.props.defaultSettings,
         }
         if (localStorage.getItem("settings") !== null) {
-            console.log("geting");
             this.state = {
                 settings: JSON.parse(localStorage.getItem("settings"))
             }
@@ -23,7 +22,6 @@ export class SettingsComponent extends Component {
             this.props.handleSettingsChange(this.state.settings);
             localStorage.setItem("settings", JSON.stringify(this.state.settings));
         }
-        console.log("old", oldProps, "new", this.props)
 
         if (oldProps.defaultSettings.darkMode != this.props.defaultSettings.darkMode) {
             this.setState({
@@ -44,7 +42,6 @@ export class SettingsComponent extends Component {
         event.target.blur();
     }
     handleHardMode(event) {
-        console.log(this.state.hardMode);
         let newSettings = {
             ...this.state.settings,
             hardMode: !this.state.settings.hardMode,

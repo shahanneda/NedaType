@@ -10,7 +10,6 @@ export class HeaderComponent extends Component {
     }
     render() {
         let isOnBrowsePage = this.props.location.pathname == '/browse' || this.props.location.pathname == '/';
-        console.log(isOnBrowsePage)
         return (
 
             <div className="header-wrapper">

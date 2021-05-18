@@ -101,8 +101,8 @@ class TypeComponent extends React.Component {
         }
       } else if (this.state.timeCurrentWordStarted == null) {// we must be on first word, forgive mistake on first word to make sure clock is started properly`
         let tempArrayOfWordWPMs =  this.state.arrayOfWordWPMs;
-        if(nextLetter == " "){ // we are on first letter AND its only 1 word, so add 999 marker
-          tempArrayOfWordWPMs.push(999); // marker to ignore word
+        if(nextLetter == " "){ // we are on first letter AND its only 1 word, so add 999 marker (since word is done but wpm does not make sense)
+          tempArrayOfWordWPMs.push(999); // marker to ignore word 
         }
         this.setState({
           timeCurrentWordStarted: Date.now(),
@@ -198,7 +198,6 @@ class TypeComponent extends React.Component {
 
     let charWeAreDeleting = alreadyTypedText.charAt(alreadyTypedText.length - 1);
 
-    console.log(charWeAreDeleting)
 
     // we dont want backspace if there is nothing to go back(start)
     if(alreadyTypedText.length == 0){

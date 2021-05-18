@@ -44,7 +44,6 @@ export class TypingPage extends Component {
 
     render() {
         var indexOfText = 0;
-        console.log(this.props.nameOfLevel)
         this.props.differentTexts.map((item, index) => {
             if (item.title == this.props.nameOfLevel) {
                 indexOfText = index;
@@ -66,7 +65,6 @@ export class TypingPage extends Component {
                             text={this.props.differentTexts[indexOfText].text}
                             updateFinalWPM={(wpm) => {
                                 this.setState({ levelFinishedWPM: wpm });
-                                console.log("set final wpm to ", wpm)
                             }}
                             levelComplete={this.state.levelComplete}
                         />
