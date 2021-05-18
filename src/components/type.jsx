@@ -73,8 +73,9 @@ class TypeComponent extends React.Component {
       });
     }
     if (key === this.state.currentLetter) {
+      let nextLetter = this.moveCurrentLetterToNextLetter();
 
-      if (this.moveCurrentLetterToNextLetter() == " " && this.state.timeCurrentWordStarted != null) {//if user types text too slow
+      if (nextLetter == " " && this.state.timeCurrentWordStarted != null) {//if user types text too slow
         let wordArray = this.getWordCurrentlyTyping().split(" ");
         let wordJustCompleted = wordArray[1];
         let nextWord = wordArray[2];
@@ -99,10 +100,15 @@ class TypeComponent extends React.Component {
 
         }
       } else if (this.state.timeCurrentWordStarted == null) {// we must be on first word, forgive mistake on first word to make sure clock is started properly`
+        let tempArrayOfWordWPMs =  this.state.arrayOfWordWPMs;
+        if(nextLetter == " "){ // we are on first letter AND its only 1 word, so add 999 marker
+          tempArrayOfWordWPMs.push(999); // marker to ignore word
+        }
         this.setState({
           timeCurrentWordStarted: Date.now(),
-          // arrayOfWordWPMs: this.state.arrayOfMistakes.concat([999])// marker to ignore word
+          arrayOfWordWPMs: tempArrayOfWordWPMs,
         })
+
       }
     } else {//user made error  
       this.addLetterToTypedText(key);
