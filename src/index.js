@@ -18,8 +18,8 @@ const differentTexts = [
     text: "Welcome, lets work on some ings. ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing. Whooooh, that must have been tiring. Tiring, liking, tiring, learning, tiring, eating, ing ing ing, something ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing ing. Something was a thing and another thing that led to something inginging, bling cling bling cling, bling cling bling cling."
   },
   {
-    title: "So you hate me now?",
-    text: "I hope you truely enjoyed typing all those ing's. I am very proud of you, you have made alot of amazing progress,keep going!!!&*&"
+    title: "So you hate me now",
+    text: "I hope you truly enjoyed typing all those ing's. I am very proud of you, you have made an extensive amount of progress, keep going!!!"
   },
   {
     title: "Paying Attention",
@@ -43,16 +43,16 @@ const differentTexts = [
   },
   {
     title: "Test",
-    text: "What is a test? A test is a test of your abilities.  Some test are not difficult, but some other tests can be very difficult, which is why I am writing this level right now. Instead of going and studing for the extremly difficult test I have to do, I am sitting here and typing this level out. Word by word, leter by letter, keystroke by keystroke."
+    text: "What is a test? A test is a test of your abilities.  Some tests are not difficult, but some other tests can be very difficult, which is why I am writing this level right now. Instead of going and studying for the extremely difficult test I have to do, I am sitting here and typing this level out. Word by word, letter by letter, keystroke by keystroke."
   },
   {
     title: "Finger roll!",
     text: "Firstly, right hand, jkl; jkl; jkl; jkl; jkl; jkl; jkl; jkl; jkl; jkl; ;lkj ;lkj ;lkj ;lkj ;lkj ;lkj ;lkj ;lkj ;lkj ;lkj jkl; jkl; jkl; jkl; jkl; jkl; ;lkj ;lkj ;lkj Now on to the left hand: asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf fdsa fdsa fdsa fdsa fdsa fdsa fdsa fdsa fdsa fdsa asdf asdf asdf asdf asdf."
   },
-  {
-    title: "English class",
-    text: "My friends and I are in english class. We are procrastinating because we are bored. Nevermind, my deskmate corrected me saying that he was done. English class is lowkey boring. I'm simply making this typing test in order to escape the inevitable death approaching me *cough* I mean literally english and speeches are going to be the epitaph of me. The deskmate is clearly bored as well. I is glancing over to see what I am doing from time to time and spinning his pencil. This test is becoming too long, so long suckers."
-  },
+  // {
+  //   title: "English class",
+  //   text: "My friends and I are in english class. We are procrastinating because we are bored. Nevermind, my deskmate corrected me saying that he was done. English class is lowkey boring. I'm simply making this typing test in order to escape the inevitable death approaching me *cough* I mean literally english and speeches are going to be the epitaph of me. The deskmate is clearly bored as well. I is glancing over to see what I am doing from time to time and spinning his pencil. This test is becoming too long, so long suckers."
+  // },
 
 ];
 

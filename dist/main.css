@@ -6,6 +6,9 @@
   --typed-text-color: rgb(255, 255, 255);
   --wpm-background: #0d0d0ee3;
   --level-box-background: rgb(134, 134, 134);
+  --level-complete-background: black;
+  --level-complete-text-color:white;
+  --page-block-background: #1f2d3d7a;
 }
 
 [data-theme="light"] {
@@ -16,6 +19,9 @@
   --typed-text-color: blue;
   --wpm-background: #00c0fee3;
   --level-box-background: cornflowerblue;
+  --level-complete-background: white;
+  --level-complete-text-color:black;
+  --page-block-color: light-gray;
 }
 
 .text {
@@ -266,7 +272,7 @@ select.min-WPM-dropDown {
 .level-complete-wrapper {
   width: 100vw;
   height: 100vh;
-  background: #1f2d3d7a;
+  background: var(--page-block-background);
   position: fixed;
   left: 0;
   top: 0;
@@ -276,7 +282,7 @@ select.min-WPM-dropDown {
 }
 
 .level-complete-card {
-  background: #0c0c0c;
+  background: var(--level-complete-background);
   padding: 1rem;
   border-radius: 30px;
   display: flex;
@@ -289,7 +295,7 @@ select.min-WPM-dropDown {
 .level-complete-header {
   padding: 12px;
   font-size: 100px;
-  color: white;
+  color: var(--level-complete-text-color);
   border-radius: 3px;
   font-family: sans-serif;
   font-style: italic;
@@ -312,8 +318,7 @@ select.min-WPM-dropDown {
   margin: 100px;
   color: white;
   border-radius: 146px;
-  border: 1px white solid;
-  padding: 20px;
+  padding: 60px;
   width: 60px;
   height: 60px;
   text-align: center;
@@ -322,8 +327,29 @@ select.min-WPM-dropDown {
   justify-content: center;
   align-items: center;
   margin: 0px;
+  background: rgb(0, 255, 214);
+  /* background: radial-gradient(circle, rgb(4 128 0) 0%, rgb(11 11 11) 58%, --var(--level-complete-background) 51%); */
+  font-weight: bolder;
+  font-size: 2.5em;
+  /* animation: circle; */
+  /* animation-name: WPM-circle-animation;
+  animation-duration: 3000ms;
+  animation-iteration-count: infinite; */
 }
 
-.next-button{
-  background:green;
+/* @keyframes WPM-circle-animation{
+
+  0%{
+    background: radial-gradient(circle, rgba(0,255,214,1) 0%, rgba(0,255,179,1) 0%, rgba(0,212,255,1) 51%);
+  }
+  50%{
+    background: radial-gradient(circle, rgba(0,255,214,1) 0%, rgba(0,255,179,1) 100%, rgba(0,212,255,1) 51%);
+  }
+  100%{
+    background: radial-gradient(circle, rgba(0,255,214,1) 0%, rgba(0,255,179,1) 0%, rgba(0,212,255,1) 51%);
+  }
+} */
+
+.next-button {
+  background: green;
 }
