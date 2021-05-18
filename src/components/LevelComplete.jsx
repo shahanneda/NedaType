@@ -12,14 +12,14 @@ export default class LevelComplete extends Component {
 
                     <div className="level-complete-body">
                         <div className="WPM-circle">
-                            50 wpm
+                            {this.props.WPM} WPM
                         </div>
                     </div>
 
                     <div className="level-complete-footer">
                         <div
                             className="bubble back-button btn"
-                            tabIndex={2}
+                            tabIndex={1}
                             onClick={this.props.handleBack}
                             onKeyDown={(e) => {
                                 if(e.key == "Enter"){
@@ -30,7 +30,7 @@ export default class LevelComplete extends Component {
 
                         <div
                             className="bubble btn next-button"
-                            tabIndex={1}
+                            tabIndex={0}
                             onClick={this.props.handleNext}
                             onKeyDown={(e) => {
                                 if (e.key == "Enter") {

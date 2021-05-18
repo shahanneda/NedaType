@@ -25,6 +25,7 @@ class WpmCounter extends React.Component {
       this.setState({
         wpm: wordsTyped / minPast,
       });
+      this.props.updateFinalWPM(Math.floor(wordsTyped/minPast));
       if (this.props.startTime == -999) {
         this.setState({ wpm: 0 });
       }

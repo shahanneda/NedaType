@@ -9,7 +9,7 @@ export class TypingPage extends Component {
         this.state = {
             indexSelected: 0,
             levelComplete: false,
-            levelFinishedWPM: 0,
+            levelFinishedWPM: 999,
         };
 
         this.handleLevelComplete = this.handleLevelComplete.bind(this);
@@ -18,10 +18,9 @@ export class TypingPage extends Component {
     }
 
 
-    handleLevelComplete(wpm) {
+    handleLevelComplete() {
         this.setState({
             levelComplete: true,
-            levelFinishedWPM: wpm,
         });
     }
 

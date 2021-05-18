@@ -15,30 +15,14 @@ class App extends React.Component {
                 minWPM: 15,
                 darkMode: true,
             },
-            shouldRedirect: false,
-            redirectLocation: "",
         };
 
         this.handleOptionChange = this.handleOptionChange.bind(this);
         this.handleSettingsChange = this.handleSettingsChange.bind(this);
         this.handleDarkMode = this.handleDarkMode.bind(this);
-        this.handleNextLevel = this.handleNextLevel.bind(this);
     }
 
-    handleNextLevel(currentLevelName){
-        // find level so we can get its index and incremenit it
-        let index = this.props.differentTexts.findIndex(textObj => textObj.title == currentLevelName);
-        if(index +1 >= this.props.differentTexts.length || index == -1){
-            index = 0;
-        }else{
-            index = index +1;
-        }
 
-        this.setState({
-            shouldRedirect: true,
-            redirectLocation: "/type/" + this.props.differentTexts[index].title
-        })
-    }
 
     render() {
         // var pageURL = window.location.href.substr(window.location.href.lastIndexOf("/") + 1).replace("%20", " ");
@@ -50,14 +34,12 @@ class App extends React.Component {
 
         return (
             <Router>
-                {this.state.shouldRedirect ? <Redirect to={this.state.redirectLocation} /> : <></>}
 
                 <Switch>
                     <Route path="/type/:text" render={((routeProps) =>
-                        <div>
-
+                        <div key={routeProps.match.params.text} >
                             <HeaderComponent typingPage={true} defaultSettings={this.state.settings} handleSettingsChange={this.handleSettingsChange}  handleDarkMode={this.handleDarkMode}/>
-                            <TypingPage differentTexts={this.props.differentTexts} nameOfLevel={routeProps.match.params.text} routeProps={routeProps} settings={this.state.settings} handleNextLevel={() => this.handleNextLevel(routeProps.match.params.text)} />
+                            <TypingPage differentTexts={this.props.differentTexts} nameOfLevel={routeProps.match.params.text} routeProps={routeProps} settings={this.state.settings}  key={routeProps.match.params.text} />
 
                         </div>
                     )} />
