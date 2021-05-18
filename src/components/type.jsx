@@ -258,20 +258,20 @@ class TypeComponent extends React.Component {
 
   _handleKeyDown(event) {
 
+    if (event.key == "b" && (event.ctrlKey || event.metaKey)) {// possibly move this to a separet compoennt
+      this.setState({ redirectSet: true });
+      return;// to prevent memory leak
+    }
+    if(this.props.levelComplete){
+      return;
+    }
     if (event.keyCode == 8) {
       event.preventDefault();
       this.handleBackSpace();
       this.updateBackgroundCursor()
       return;
     }
-    if (event.key == "b" && (event.ctrlKey || event.metaKey)) {// possibly move this to a separet compoennt
-      this.setState({ redirectSet: true });
-      return;// to prevent memory leak
-    }
 
-    if(this.props.levelComplete){
-      return;
-    }
 
 
     let keycode = event.keyCode;

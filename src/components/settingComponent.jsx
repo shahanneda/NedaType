@@ -65,7 +65,7 @@ export class SettingsComponent extends Component {
                 <div className="settings-container">
                     <div className="bubble">
                         <label htmlFor="hard-mode" tabIndex={3} className="hard-modeLabel">Hard Mode:</label>
-                        <input type="checkbox" tabIndex={4} className="hard-mode-checkbox" name="hard-mode" onChange={this.handleHardMode} checked={this.state.settings.hardMode}></input>
+                        <input type="checkbox" tabIndex={4} tclassName="hard-mode-checkbox" name="hard-mode" onChange={this.handleHardMode} checked={this.state.settings.hardMode}></input>
                     </div>
                     <div className="bubble"><label htmlFor="number-option" className="min-WPM-label">Minimum WPM:</label>
                         <select name="number-option" value={this.state.settings.minWPM} onChange={this.minWpmDropdown} className="min-WPM-dropDown">
@@ -76,7 +76,7 @@ export class SettingsComponent extends Component {
                                         {i * 15}
                                     </option>
                                 )
-                            }
+                            }u
                         </select>
                     </div>
                 </div>
