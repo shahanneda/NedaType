@@ -2,6 +2,16 @@ import React, { Component } from 'react'
 
 export default class LevelComplete extends Component {
 
+    constructor(props){
+        super(props);
+
+        this.nextButtonRef = React.createRef();
+    }
+
+    componentDidMount(){
+        this.nextButtonRef.current.focus();
+    }
+
     render() {
         return (
             <div className="level-complete-wrapper">
@@ -19,7 +29,7 @@ export default class LevelComplete extends Component {
                     <div className="level-complete-footer">
                         <div
                             className="bubble back-button btn"
-                            tabIndex={1}
+                            tabIndex={2}
                             onClick={this.props.handleBack}
                             onKeyDown={(e) => {
                                 if(e.key == "Enter"){
@@ -30,13 +40,14 @@ export default class LevelComplete extends Component {
 
                         <div
                             className="bubble btn next-button"
-                            tabIndex={0}
+                            tabIndex={1}
                             onClick={this.props.handleNext}
                             onKeyDown={(e) => {
                                 if (e.key == "Enter") {
                                     this.props.handleNext();
                                 }
                             }}
+                            ref={this.nextButtonRef}
                         >Next</div>
 
                     </div>
