@@ -8,19 +8,38 @@ export class TypingPage extends Component {
         super(props);
         this.state = {
             indexSelected: 0,
+            levelComplete: false,
+            levelFinishedWPM: 0,
         };
 
         this.handleLevelComplete = this.handleLevelComplete.bind(this);
         this.handleBack = this.handleBack.bind(this);
+        this.handleNextLevel = this.handleNextLevel.bind(this);
     }
 
 
-    handleLevelComplete(){
+    handleLevelComplete(wpm) {
+        this.setState({
+            levelComplete: true,
+            levelFinishedWPM: wpm,
+        });
+    }
 
+    // for switching to next level
+    handleNextLevel(){
+        // find level so we can get its index and incremenit it
+        let index = this.props.differentTexts.findIndex(textObj => textObj.title == this.props.nameOfLevel);
+        if(index +1 >= this.props.differentTexts.length || index == -1){
+            index = 0;
+        }else{
+            index = index +1;
+        }
+
+        this.props.history.push('/type/' + this.props.differentTexts[index].title);
     }
 
 
-    handleBack()  {
+    handleBack() {
         this.props.history.push('/browse')
     }
 
@@ -41,8 +60,21 @@ export class TypingPage extends Component {
                 <div key={this.props.text} >
 
                     <div className="outer-text-container">
-                        <TypeComponent align="justify" handleLevelComplete={this.handleLevelComplete} settings={this.props.settings} text={this.props.differentTexts[indexOfText].text} />
-                        <LevelComplete handleNext={this.props.handleNextLevel} handleBack={this.handleBack} />
+                        <TypeComponent
+                            align="justify"
+                            handleLevelComplete={this.handleLevelComplete}
+                            settings={this.props.settings}
+                            text={this.props.differentTexts[indexOfText].text}
+                            updateFinalWPM={(wpm) => {
+                                this.setState({ levelFinishedWPM: wpm });
+                                console.log("set final wpm to ", wpm)
+                            }}
+                            levelComplete={this.state.levelComplete}
+                        />
+                        {this.state.levelComplete ?
+                            <LevelComplete WPM={this.state.levelFinishedWPM} handleNext={this.handleNextLevel} handleBack={this.handleBack} />
+                            : ""}
+
                     </div>
                 </div>
             </div>

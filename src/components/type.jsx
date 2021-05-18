@@ -29,6 +29,7 @@ class TypeComponent extends React.Component {
     this.moveCurrentLetterToNextLetter = this.moveCurrentLetterToNextLetter.bind(this);
     this.handleBackSpace = this.handleBackSpace.bind(this);
     this.addLetterToTypedText = this.addLetterToTypedText.bind(this);
+    this.checkForLevelComplete = this.checkForLevelComplete.bind(this);
 
   }
   componentDidMount() {
@@ -248,6 +249,13 @@ class TypeComponent extends React.Component {
     this.cursorBackgroundRef.current.style.top = (bounding.top+7) + "px"; // plus 7 to align the cursor with letter 
   }
 
+  checkForLevelComplete(){
+    // if no more text left to completee
+    if(this.state.screenText == "" && this.state.currentLetter == "" ){
+      this.props.handleLevelComplete()
+    }
+  }
+
   _handleKeyDown(event) {
 
     if (event.keyCode == 8) {
@@ -260,6 +268,11 @@ class TypeComponent extends React.Component {
       this.setState({ redirectSet: true });
       return;// to prevent memory leak
     }
+
+    if(this.props.levelComplete){
+      return;
+    }
+
 
     let keycode = event.keyCode;
     // console.log("Keycode of key pressed" + keycode);
@@ -286,6 +299,7 @@ class TypeComponent extends React.Component {
           // }
           this.handleKeyTyped(characterTyped);
           this.updateBackgroundCursor()
+          this.checkForLevelComplete();
           break;
       }
     }
@@ -318,7 +332,7 @@ class TypeComponent extends React.Component {
     return <div>
       {this.state.redirectSet ? <Redirect to="/browse" /> : ""}
 
-      <WPMCounter startTime={this.state.timeOfStart} charactersTyped={this.state.charTypedSinceStart} />
+      <WPMCounter startTime={this.state.timeOfStart} charactersTyped={this.state.charTypedSinceStart} updateFinalWPM={this.props.updateFinalWPM} />
      
       <span ref={this.cursorBackgroundRef} className={"cursor-background"}>&nbsp;</span>
 
