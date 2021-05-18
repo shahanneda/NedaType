@@ -6,9 +6,9 @@
   --typed-text-color: rgb(255, 255, 255);
   --wpm-background: #0d0d0ee3;
   --level-box-background: rgb(134, 134, 134);
-  --level-complete-background: black;
+  --level-complete-background: rgba(255, 255, 255, 0);
   --level-complete-text-color:white;
-  --page-block-background: #1f2d3d7a;
+  --page-block-background: #1f2d3de0;
 }
 
 [data-theme="light"] {
@@ -19,8 +19,8 @@
   --typed-text-color: blue;
   --wpm-background: #00c0fee3;
   --level-box-background: cornflowerblue;
-  --level-complete-background: white;
-  --level-complete-text-color:black;
+  --level-complete-background: rgba(255, 255, 255, 0);
+  --level-complete-text-color:white;
   --page-block-color: light-gray;
 }
 
@@ -299,7 +299,7 @@ select.min-WPM-dropDown {
   border-radius: 3px;
   font-family: sans-serif;
   font-style: italic;
-  border-bottom: 2px solid antiquewhite;
+  /* border-bottom: 2px solid antiquewhite; */
   margin-bottom: 45.4px;
 }
 
