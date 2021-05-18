@@ -1,23 +1,21 @@
-
 :root {
-
-  --page-background:rgb(36, 36, 36);
+  --page-background: rgb(36, 36, 36);
   --header-background: #000000;
   --bubble-background: #24242463;
   --text-color: rgb(131, 131, 131);
   --typed-text-color: rgb(255, 255, 255);
   --wpm-background: #0d0d0ee3;
-  --level-box-background:rgb(134, 134, 134);
+  --level-box-background: rgb(134, 134, 134);
 }
-[data-theme="light"] {
 
-  --page-background:white;
+[data-theme="light"] {
+  --page-background: white;
   --header-background: #00c0ff;
   --bubble-background: #4bd8f7;
   --text-color: black;
   --typed-text-color: blue;
   --wpm-background: #00c0fee3;
-  --level-box-background:cornflowerblue; 
+  --level-box-background: cornflowerblue;
 }
 
 .text {
@@ -32,17 +30,26 @@
   white-space: pre-wrap;
   text-align: justify;
   color: var(--text-color);
-
 }
-.outer-text-container{
+
+.outer-text-container {
   width: 100%;
 }
+
 @keyframes colorful-cursor-animation {
-  0%   {background-color: red;}
-  25%  {background-color: yellow;}
-  50%  {background-color: blue;}
-  100% {background-color: green;}
-   /*0%  {background-color: cyan;} 
+  0% {
+    background-color: red;
+  }
+  25% {
+    background-color: yellow;
+  }
+  50% {
+    background-color: blue;
+  }
+  100% {
+    background-color: green;
+  }
+  /*0%  {background-color: cyan;} 
   50%  {background-color: rgba(39, 39, 235, 0.235);}
   100% {background-color: lightblue;}  */
 }
@@ -60,23 +67,20 @@
     background-color: rgba(185, 185, 185, 0.6);
   }
   50% {
-
     background-color: rgba(185, 185, 185, 1);
   }
   100% {
-
     background-color: rgba(185, 185, 185, 0.6);
   }
 }
 
-.current-letter{
+.current-letter {
   background-color: clear;
   /* word-spacing: 50px; */
   /* animation-name: colorfulCursorAnimation; */
-
 }
 
-.cursor-background{
+.cursor-background {
   background-color: rgba(185, 185, 185, 0.6);
   /* width:100px; */
   /* height: 100px;; */
@@ -86,22 +90,25 @@
   animation-duration: 1060ms;
   animation-iteration-count: infinite;
   padding-top: 1px;
-
 }
 
-.already-typed-text{
-  color:var(--typed-text-color);
+.already-typed-text {
+  color: var(--typed-text-color);
 }
-.whitespace-current-letter{
+
+.whitespace-current-letter {
   opacity: 0.2;
 }
-.error{
-  color:red;
+
+.error {
+  color: red;
 }
-.space-error{
+
+.space-error {
   background-color: rgba(255, 0, 0, 0.527);
   white-space: pre;
 }
+
 /* span.wpmCounterOnText {
   font-size: 12.8px;
   position: relative;
@@ -112,6 +119,11 @@
   color: yellowgreen;
  
 } */
+
+.btn:hover {
+  cursor: pointer;
+}
+
 span.wpm-counter-on-text {
   font-size: 8.8px;
   position: absolute;
@@ -119,15 +131,15 @@ span.wpm-counter-on-text {
   margin-top: -19px;
   margin-left: -35.5px;
 }
-.levels-wrapper{
-  margin:10px 10px 10px 10px;
+
+.levels-wrapper {
+  margin: 10px 10px 10px 10px;
   color: white;
   display: grid;
   grid-template-columns: 33% 33% 33%;
-  
-  
 }
-.level-wrapper-box{
+
+.level-wrapper-box {
   margin: 2em;
   text-align: center;
   padding: 0.3em;
@@ -136,22 +148,23 @@ span.wpm-counter-on-text {
   background-color: var(--level-box-background);
   color: white;
   text-decoration: none;
-
   /* padding-bottom: 50%; */
   /* height: 0px;; */
   /* width: 50%; */
 }
-.level-name{
+
+.level-name {
   text-align: center;
   position: relative;
-  top:50%;
-  text-decoration: none;
-}
-a{
+  top: 50%;
   text-decoration: none;
 }
 
-.header-wrapper{
+a {
+  text-decoration: none;
+}
+
+.header-wrapper {
   background-color: var(--header-background);
   position: relative;
   top: 0px;
@@ -160,12 +173,14 @@ a{
   display: table;
   table-layout: fixed;
 }
+
 .header-wrapper:after {
   content: "";
   display: table;
   clear: both;
 }
-.site-title{
+
+.site-title {
   color: white;
   font-size: large;
   font-style: italic;
@@ -176,24 +191,28 @@ a{
   float: left;
   width: 33.33%;
 }
-html{
+
+html {
   margin: 0px;
   background-color: var(--page-background);
-  
+  font-family: sans-serif;
 }
-body{
+
+body {
   /* padding: 0px; */
   margin: 0px;
   /* margin-top: 10vh;; */
 }
-.header-right{
+
+.header-right {
   float: right;
 }
 
-.red-WPM{
-  color:red !important;
+.red-WPM {
+  color: red !important;
 }
-.wpm-counter-container{
+
+.wpm-counter-container {
   background: var(--wpm-background);
   text-align: center;
   color: white;
@@ -201,18 +220,20 @@ body{
   /* margin-top:6%; */
 }
 
-.wpm-counter-text{
+.wpm-counter-text {
   font-family: sans-serif;
   font-style: italic;
 }
-.settings-container{
+
+.settings-container {
   float: left;
   display: inline-block;
   margin-right: auto;
   float: left;
   width: 33.33%;
 }
-.bubble{
+
+.bubble {
   margin: 0.5em;
   color: white;
   background: var(--bubble-background);
@@ -221,19 +242,17 @@ body{
   display: inline-block;
 }
 
-
 .outer-container-text {
   margin: 10px;
 }
 
-
-.dark-mode-button{
+.dark-mode-button {
   font-size: 29.6px;
   padding: 8px;
 }
 
-.dark-mode-button:hover{
-  cursor:pointer;
+.dark-mode-button:hover {
+  cursor: pointer;
   transition: backgroundColor 1000ms linear;
 }
 
@@ -242,4 +261,69 @@ select.min-WPM-dropDown {
   border: none;
   font-size: 16px;
   color: white;
+}
+
+.level-complete-wrapper {
+  width: 100vw;
+  height: 100vh;
+  background: #1f2d3d7a;
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.level-complete-card {
+  background: #0c0c0c;
+  padding: 1rem;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.level-complete-header {
+  padding: 12px;
+  font-size: 100px;
+  color: white;
+  border-radius: 3px;
+  font-family: sans-serif;
+  font-style: italic;
+  border-bottom: 2px solid antiquewhite;
+  margin-bottom: 45.4px;
+}
+
+.level-complete-footer {
+  margin-bottom: 0px;
+  align-self: flex-end;
+}
+
+.level-complete-body {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.WPM-circle {
+  margin: 100px;
+  color: white;
+  border-radius: 146px;
+  border: 1px white solid;
+  padding: 20px;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  /* vertical-align: top; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+}
+
+.next-button{
+  background:green;
 }
